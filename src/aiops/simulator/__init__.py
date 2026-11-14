@@ -1,0 +1,1 @@
+"""Synthetic CPU metrics simulator with labeled anomalies."""
