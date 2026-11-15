@@ -16,6 +16,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "pytest>=8",
+    "matplotlib>=3.10",
 ]
 
 [tool.setuptools.packages.find]
