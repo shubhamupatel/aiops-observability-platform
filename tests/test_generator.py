@@ -99,3 +99,17 @@ def test_invalid_config_is_rejected(bad_field):
 def test_config_is_frozen(config):
     with pytest.raises(FrozenInstanceError):
         config.baseline = 50.0
+
+# Verifies that configuration instances cannot be modified after creation.
+def test_config_is_frozen(config):
+    with pytest.raises(FrozenInstanceError):
+        config.baseline = 50.0
+
+
+# Verifies that a series can't be changed after creation, by field or by array contents.
+def test_series_cannot_be_changed_after_creation(signal):
+    with pytest.raises(FrozenInstanceError):
+        signal.level = signal.level.copy()
+    for array in (signal.timestamps, signal.level, signal.seasonal, signal.noise):
+        with pytest.raises(ValueError):
+            array[0] = array[1]

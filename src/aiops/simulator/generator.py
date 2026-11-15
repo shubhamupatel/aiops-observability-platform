@@ -7,7 +7,7 @@ import numpy as np
 from aiops.simulator.config import BaseSignalConfig
 
 
-@dataclass
+@dataclass(frozen=True, eq=False)
 class SignalComponents:
     """Container dataclass that holds the separate components of a generated time-series signal.
 
@@ -19,6 +19,10 @@ class SignalComponents:
     seasonal: np.ndarray	# the daily cycle; seasonal suppression will edit this
     noise: np.ndarray	# AR(1) noise
     bounds: tuple[float, float]
+
+    def __post_init__(self):
+        for array in (self.timestamps, self.level, self.seasonal, self.noise):
+            array.flags.writeable = False	# arrays are shared between copies of a series, so no in-place edits
 
     @property
     def expected(self) -> np.ndarray:
@@ -43,19 +47,16 @@ def generate_base_signal(config: BaseSignalConfig, rng: np.random.Generator) -> 
         bounds=config.bounds,
     )
 
-
 def _make_timestamps(config: BaseSignalConfig) -> np.ndarray:
     start = np.datetime64(config.start, "m")	# minute precision
     offsets = np.arange(config.n_steps) * np.timedelta64(config.interval_minutes, "m")
     return start + offsets
-
 
 def _make_seasonal(config: BaseSignalConfig, timestamps: np.ndarray) -> np.ndarray:
     midnight = timestamps[0].astype("datetime64[D]")	# midnight of the first day
     minutes = (timestamps - midnight).astype(np.int64)	# minutes since that midnight
     angle = 2 * np.pi * (minutes - config.peak_hour * 60) / config.period_minutes
     return config.amplitude * np.cos(angle)	# cos peaks where angle = 0, i.e. at peak_hour
-
 
 def _make_ar1_noise(config: BaseSignalConfig, rng: np.random.Generator) -> np.ndarray:
     phi = config.noise_ar_coef

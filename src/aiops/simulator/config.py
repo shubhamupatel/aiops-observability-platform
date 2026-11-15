@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 
 MINUTES_PER_DAY = 24 * 60
-NOISE_MARGIN_SIGMAS = 3.0	# noise stays within ±3σ about 99.7% of the time
+NOISE_MARGIN_SIGMAS = 3.0	# noise stays within 3 standard deviations about 99.7% of the time
 
 
 @dataclass(frozen=True)
@@ -47,9 +47,29 @@ class BaseSignalConfig:
         """Number of samples in the series."""
         return self.duration_days * MINUTES_PER_DAY // self.interval_minutes
 
+@dataclass(frozen=True)
+class SpikeConfig:
+    """Parameters for spikes (a one-sample upward jump)"""
+
+    magnitude_range: tuple[float, float] = (10.0, 40.0)	# CPU points added, drawn uniformly from this range
+
+    def __post_init__(self):
+        low, high = self.magnitude_range
+        if not 0 < low <= high:
+            raise ValueError("magnitude_range must be (low, high) with 0 < low <= high")
+
 
 @dataclass(frozen=True)
 class MetricConfig:
-    """Top-level simulator config; the anomaly sub-configs join it in the injector steps."""
+    """Top-level simulator config: the base signal + one sub-config per anomaly type."""
 
     base: BaseSignalConfig = field(default_factory=BaseSignalConfig)
+    spike: SpikeConfig = field(default_factory=SpikeConfig)
+
+    def __post_init__(self):
+        upper = self.base.bounds[1]
+        normal_peak = self.base.baseline + self.base.amplitude + NOISE_MARGIN_SIGMAS * self.base.noise_std
+        if normal_peak + self.spike.magnitude_range[1] > upper:
+            raise ValueError(
+                f"the largest spike on top of the daily peak (+ {NOISE_MARGIN_SIGMAS:g}·noise_std) must stay within bounds"
+            )
