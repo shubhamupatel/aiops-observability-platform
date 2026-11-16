@@ -77,16 +77,27 @@ class LevelShiftConfig:
 
 
 @dataclass(frozen=True)
+class SeasonalSuppressionConfig:
+    """Parameters for seasonal suppression: the daily cycle disappears for a while, then returns."""
+
+    duration_range_minutes: tuple[int, int] = (720, 1440)	# 12 to 24 hours, so every window includes a daily peak or low
+
+    def __post_init__(self):
+        _check_range("duration_range_minutes", self.duration_range_minutes)
+
+
+@dataclass(frozen=True)
 class MetricConfig:
     """Top-level simulator config (the base signal plus one sub-config per anomaly type)"""
 
     base: BaseSignalConfig = field(default_factory=BaseSignalConfig)
     spike: SpikeConfig = field(default_factory=SpikeConfig)
     level_shift: LevelShiftConfig = field(default_factory=LevelShiftConfig)
+    seasonal_suppression: SeasonalSuppressionConfig = field(default_factory=SeasonalSuppressionConfig)
 
     def __post_init__(self):
         self._check_headroom()
-        self._check_level_shift_durations()
+        self._check_durations()
 
     def _check_headroom(self):
         upper = self.base.bounds[1]
@@ -94,17 +105,22 @@ class MetricConfig:
         largest_jumps = {	# anomalies never overlap, so each type only has to fit on its own
             "spike": self.spike.magnitude_range[1],
             "level_shift": self.level_shift.magnitude_range[1],
-        }
+        }	# seasonal_suppression isn't listed: flattening the cycle moves values toward the baseline, never past a bound
         for name, jump in largest_jumps.items():
             if normal_peak + jump > upper:
                 raise ValueError(
                     f"the largest {name} on top of the daily peak (+ {NOISE_MARGIN_SIGMAS:g}·noise_std) must stay within bounds"
                 )
 
-    def _check_level_shift_durations(self):
+    def _check_durations(self):
         interval = self.base.interval_minutes
-        shortest, longest = self.level_shift.duration_range_minutes
-        if shortest % interval or longest % interval:
-            raise ValueError(f"level_shift durations must be multiples of interval_minutes ({interval})")
-        if longest > self.base.duration_days * MINUTES_PER_DAY:
-            raise ValueError("level_shift's longest duration must fit inside the series")
+        series_minutes = self.base.duration_days * MINUTES_PER_DAY
+        duration_ranges = {
+            "level_shift": self.level_shift.duration_range_minutes,
+            "seasonal_suppression": self.seasonal_suppression.duration_range_minutes,
+        }
+        for name, (shortest, longest) in duration_ranges.items():
+            if shortest % interval or longest % interval:
+                raise ValueError(f"{name} durations must be multiples of interval_minutes ({interval})")
+            if longest > series_minutes:
+                raise ValueError(f"{name}'s longest duration must fit inside the series")

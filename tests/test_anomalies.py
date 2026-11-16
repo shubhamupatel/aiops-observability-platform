@@ -8,9 +8,11 @@ from aiops.simulator import (
     AnomalyKind,
     LevelShiftConfig,
     MetricConfig,
+    SeasonalSuppressionConfig,
     SpikeConfig,
     generate_base_signal,
     inject_level_shift,
+    inject_seasonal_suppression,
     inject_spike,
 )
 
@@ -192,3 +194,107 @@ def test_level_shift_config_rejects_bad_ranges(bad_field):
 def test_metric_config_rejects_bad_level_shift_settings(level_shift):
     with pytest.raises(ValueError):
         MetricConfig(level_shift=level_shift)
+
+# Verifies that a suppression zeroes the daily cycle inside its window and changes nothing else.
+@pytest.mark.parametrize("start", [0, 1000, N_STEPS - 288])	# first sample, middle, last start with room for the longest window
+def test_suppression_flattens_exactly_its_window(series, start):
+    suppressed, event = inject_seasonal_suppression(series, start, SeasonalSuppressionConfig(), np.random.default_rng(SEED))
+    inside = np.zeros(N_STEPS, dtype=bool)
+    inside[event.start:event.end] = True	# true only for samples in the window
+    assert np.all(suppressed.seasonal[inside] == 0.0)
+    np.testing.assert_array_equal(suppressed.seasonal[~inside], series.seasonal[~inside])
+    np.testing.assert_array_equal(suppressed.level, series.level)
+    np.testing.assert_array_equal(suppressed.noise, series.noise)
+
+
+# Verifies that injecting a suppression doesn't modify the original series.
+def test_suppression_leaves_input_untouched(series):
+    seasonal_before = series.seasonal.copy()
+    inject_seasonal_suppression(series, 1000, SeasonalSuppressionConfig(), np.random.default_rng(SEED))
+    np.testing.assert_array_equal(series.seasonal, seasonal_before)
+
+
+# Verifies the event's type, start, duration, and recorded parameters.
+def test_suppression_event_records_the_suppression(series):
+    _, event = inject_seasonal_suppression(series, 1000, SeasonalSuppressionConfig(), np.random.default_rng(SEED))
+    assert event.kind is AnomalyKind.SEASONAL_SUPPRESSION
+    assert event.kind == "seasonal_suppression"
+    assert event.start == 1000
+    assert 144 <= event.end - event.start <= 288	# 720 to 1440 minutes at 5 minutes per sample
+    assert set(event.params) == {"magnitude"}
+
+
+# Verifies that magnitude equals the largest change the suppression made to the expected value.
+def test_suppression_magnitude_is_largest_change_to_expected(series):
+    suppressed, event = inject_seasonal_suppression(series, 1000, SeasonalSuppressionConfig(), np.random.default_rng(SEED))
+    change = np.abs(suppressed.expected - series.expected)
+    assert event.params["magnitude"] == pytest.approx(change.max())
+
+
+# Verifies that even the shortest window reaches the full daily amplitude, wherever it starts.
+def test_shortest_window_always_reaches_full_amplitude(series):
+    shortest = SeasonalSuppressionConfig().duration_range_minutes[0]
+    config = SeasonalSuppressionConfig(duration_range_minutes=(shortest, shortest))	# always draw the shortest default window
+    for start in range(288):	# every start position across one day
+        _, event = inject_seasonal_suppression(series, start, config, np.random.default_rng(SEED))
+        assert event.params["magnitude"] == pytest.approx(15.0)	# the full amplitude of the daily cycle
+
+
+# Verifies that the same seed gives the same duration.
+def test_suppression_same_seed_gives_same_event(series):
+    _, first = inject_seasonal_suppression(series, 1000, SeasonalSuppressionConfig(), np.random.default_rng(SEED))
+    _, second = inject_seasonal_suppression(series, 1000, SeasonalSuppressionConfig(), np.random.default_rng(SEED))
+    assert first == second
+
+
+# Verifies that drawn durations stay inside the configured range.
+def test_suppression_durations_stay_in_range(series):
+    rng = np.random.default_rng(SEED)
+    events = [inject_seasonal_suppression(series, 1000, SeasonalSuppressionConfig(), rng)[1] for _ in range(200)]
+    durations = [event.end - event.start for event in events]
+    assert 144 <= min(durations) and max(durations) <= 288
+
+
+# Verifies that both the shortest and the longest duration can actually be drawn.
+def test_suppression_duration_can_hit_both_ends(series):
+    config = SeasonalSuppressionConfig(duration_range_minutes=(720, 730))	# 144 to 146 samples, so 100 draws hit every value
+    rng = np.random.default_rng(SEED)
+    durations = set()
+    for _ in range(100):
+        _, event = inject_seasonal_suppression(series, 1000, config, rng)
+        durations.add(event.end - event.start)
+    assert durations == {144, 145, 146}	# 146 only shows up because of endpoint=True
+
+
+# Verifies that a single-value range pins the minutes-to-samples conversion.
+def test_fixed_duration_pins_the_suppression(series):
+    config = SeasonalSuppressionConfig(duration_range_minutes=(1440, 1440))
+    _, event = inject_seasonal_suppression(series, 1000, config, np.random.default_rng(SEED))
+    assert (event.start, event.end) == (1000, 1288)	# 1440 minutes = 288 samples
+
+
+# Verifies that starts outside the series, or too close to its end, are rejected.
+@pytest.mark.parametrize("start", [-1, N_STEPS - 287])	# before the series; one past the last start with room
+def test_suppression_rejects_bad_starts(series, start):
+    with pytest.raises(ValueError):
+        inject_seasonal_suppression(series, start, SeasonalSuppressionConfig(), np.random.default_rng(SEED))
+
+
+# Verifies that the suppression config rejects invalid ranges.
+@pytest.mark.parametrize("duration_range_minutes", [(0, 720), (1440, 720)])	# zero low end, reversed order
+def test_suppression_config_rejects_bad_ranges(duration_range_minutes):
+    with pytest.raises(ValueError):
+        SeasonalSuppressionConfig(duration_range_minutes)
+
+
+# Verifies the cross-section rules MetricConfig enforces for suppressions.
+@pytest.mark.parametrize(
+    "seasonal_suppression",
+    [
+        SeasonalSuppressionConfig(duration_range_minutes=(722, 1440)),	# 722 isn't a multiple of 5
+        SeasonalSuppressionConfig(duration_range_minutes=(720, 20165)),	# longer than the 14-day series (20,160 minutes)
+    ],
+)
+def test_metric_config_rejects_bad_suppression_settings(seasonal_suppression):
+    with pytest.raises(ValueError):
+        MetricConfig(seasonal_suppression=seasonal_suppression)
