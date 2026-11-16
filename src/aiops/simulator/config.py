@@ -47,6 +47,13 @@ class BaseSignalConfig:
         """Number of samples in the series."""
         return self.duration_days * MINUTES_PER_DAY // self.interval_minutes
 
+def _check_range(name: str, value_range: tuple[float, float]) -> None:
+    """Raise unless value_range is (low, high) with 0 < low <= high."""
+    low, high = value_range
+    if not 0 < low <= high:
+        raise ValueError(f"{name} must be (low, high) with 0 < low <= high, got {value_range}")
+
+
 @dataclass(frozen=True)
 class SpikeConfig:
     """Parameters for spikes (a one-sample upward jump)"""
@@ -54,22 +61,50 @@ class SpikeConfig:
     magnitude_range: tuple[float, float] = (10.0, 40.0)	# CPU points added, drawn uniformly from this range
 
     def __post_init__(self):
-        low, high = self.magnitude_range
-        if not 0 < low <= high:
-            raise ValueError("magnitude_range must be (low, high) with 0 < low <= high")
+        _check_range("magnitude_range", self.magnitude_range)
+
+
+@dataclass(frozen=True)
+class LevelShiftConfig:
+    """Parameters for level-shifts (a sustained upward step that drops back abruptly)"""
+
+    magnitude_range: tuple[float, float] = (5.0, 25.0)	# CPU points added, drawn uniformly from this range
+    duration_range_minutes: tuple[int, int] = (60, 480)	# how long the shift lasts, drawn uniformly (1 to 8 hours)
+
+    def __post_init__(self):
+        _check_range("magnitude_range", self.magnitude_range)
+        _check_range("duration_range_minutes", self.duration_range_minutes)
 
 
 @dataclass(frozen=True)
 class MetricConfig:
-    """Top-level simulator config: the base signal + one sub-config per anomaly type."""
+    """Top-level simulator config (the base signal plus one sub-config per anomaly type)"""
 
     base: BaseSignalConfig = field(default_factory=BaseSignalConfig)
     spike: SpikeConfig = field(default_factory=SpikeConfig)
+    level_shift: LevelShiftConfig = field(default_factory=LevelShiftConfig)
 
     def __post_init__(self):
+        self._check_headroom()
+        self._check_level_shift_durations()
+
+    def _check_headroom(self):
         upper = self.base.bounds[1]
         normal_peak = self.base.baseline + self.base.amplitude + NOISE_MARGIN_SIGMAS * self.base.noise_std
-        if normal_peak + self.spike.magnitude_range[1] > upper:
-            raise ValueError(
-                f"the largest spike on top of the daily peak (+ {NOISE_MARGIN_SIGMAS:g}·noise_std) must stay within bounds"
-            )
+        largest_jumps = {	# anomalies never overlap, so each type only has to fit on its own
+            "spike": self.spike.magnitude_range[1],
+            "level_shift": self.level_shift.magnitude_range[1],
+        }
+        for name, jump in largest_jumps.items():
+            if normal_peak + jump > upper:
+                raise ValueError(
+                    f"the largest {name} on top of the daily peak (+ {NOISE_MARGIN_SIGMAS:g}·noise_std) must stay within bounds"
+                )
+
+    def _check_level_shift_durations(self):
+        interval = self.base.interval_minutes
+        shortest, longest = self.level_shift.duration_range_minutes
+        if shortest % interval or longest % interval:
+            raise ValueError(f"level_shift durations must be multiples of interval_minutes ({interval})")
+        if longest > self.base.duration_days * MINUTES_PER_DAY:
+            raise ValueError("level_shift's longest duration must fit inside the series")

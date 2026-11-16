@@ -18,7 +18,8 @@ class SignalComponents:
     level: np.ndarray	# the baseline; level-shifts and drift will edit this
     seasonal: np.ndarray	# the daily cycle; seasonal suppression will edit this
     noise: np.ndarray	# AR(1) noise
-    bounds: tuple[float, float]
+    bounds: tuple[float, float] # bounds to clip to
+    interval_minutes: int	# minutes between samples, so injectors can turn durations into sample counts
 
     def __post_init__(self):
         for array in (self.timestamps, self.level, self.seasonal, self.noise):
@@ -45,6 +46,7 @@ def generate_base_signal(config: BaseSignalConfig, rng: np.random.Generator) -> 
         seasonal=_make_seasonal(config, timestamps),
         noise=_make_ar1_noise(config, rng),
         bounds=config.bounds,
+        interval_minutes=config.interval_minutes,
     )
 
 def _make_timestamps(config: BaseSignalConfig) -> np.ndarray:

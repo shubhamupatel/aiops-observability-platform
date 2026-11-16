@@ -5,7 +5,7 @@ from enum import StrEnum
 
 import numpy as np
 
-from aiops.simulator.config import SpikeConfig
+from aiops.simulator.config import LevelShiftConfig, SpikeConfig
 from aiops.simulator.generator import SignalComponents
 
 
@@ -13,6 +13,7 @@ class AnomalyKind(StrEnum):
     """The anomaly types the simulator can inject. Each injector adds its own member."""
 
     SPIKE = "spike"
+    LEVEL_SHIFT = "level_shift"
 
 
 @dataclass(frozen=True)
@@ -35,10 +36,8 @@ def inject_spike(
     config: SpikeConfig,
     rng: np.random.Generator,
 ) -> tuple[SignalComponents, AnomalyEvent]:
-    """Add a one-sample upward jump at start. Returns a new series; the input is left untouched."""
-    n_steps = len(components.level)
-    if not 0 <= start < n_steps:
-        raise ValueError(f"start must be in [0, {n_steps}), got {start}")
+    """Inject a spike: add a one-sample upward jump at start. Returns a new series."""
+    _check_start(start, len(components.level))
 
     low, high = config.magnitude_range
     magnitude = float(rng.uniform(low, high))
@@ -47,3 +46,30 @@ def inject_spike(
 
     event = AnomalyEvent(AnomalyKind.SPIKE, start, start + 1, {"magnitude": magnitude})
     return replace(components, level=level), event
+
+def inject_level_shift(
+    components: SignalComponents,
+    start: int,
+    config: LevelShiftConfig,
+    rng: np.random.Generator,
+) -> tuple[SignalComponents, AnomalyEvent]:
+    """Inject a level shift: raise the level by a fixed amount for a random duration, then drop back. Returns a new series."""
+    n_steps = len(components.level)
+    _check_start(start, n_steps)
+    shortest, longest = (m // components.interval_minutes for m in config.duration_range_minutes)	# minutes to samples
+    if start + longest > n_steps:
+        raise ValueError(f"start={start} leaves no room for the longest shift ({longest} samples) before the series ends")
+
+    low, high = config.magnitude_range
+    magnitude = float(rng.uniform(low, high))
+    n_samples = int(rng.integers(shortest, longest, endpoint=True))	# endpoint=True makes longest itself possible
+    end = start + n_samples
+    level = components.level.copy()
+    level[start:end] += magnitude
+
+    event = AnomalyEvent(AnomalyKind.LEVEL_SHIFT, start, end, {"magnitude": magnitude})
+    return replace(components, level=level), event
+
+def _check_start(start: int, n_steps: int) -> None:
+    if not 0 <= start < n_steps:
+        raise ValueError(f"start must be in [0, {n_steps}), got {start}")
