@@ -1,0 +1,64 @@
+{
+  "seed": 42,
+  "n_series": 20,
+  "numpy_version": "2.5.4",
+  "config": {
+    "base": {
+      "baseline": 35.0,
+      "amplitude": 15.0,
+      "period_minutes": 1440,
+      "peak_hour": 14.0,
+      "interval_minutes": 5,
+      "duration_days": 14,
+      "noise_std": 3.0,
+      "noise_ar_coef": 0.6,
+      "bounds": [
+        0.0,
+        100.0
+      ],
+      "start": "2026-01-05 00:00:00"
+    },
+    "spike": {
+      "magnitude_range": [
+        10.0,
+        40.0
+      ],
+      "count": 3
+    },
+    "level_shift": {
+      "magnitude_range": [
+        5.0,
+        25.0
+      ],
+      "duration_range_minutes": [
+        60,
+        480
+      ],
+      "count": 2
+    },
+    "seasonal_suppression": {
+      "duration_range_minutes": [
+        720,
+        1440
+      ],
+      "count": 1
+    },
+    "drift": {
+      "magnitude_range": [
+        10.0,
+        40.0
+      ],
+      "duration_range_minutes": [
+        360,
+        1440
+      ],
+      "label_threshold": 5.0,
+      "count": 1
+    },
+    "schedule": {
+      "warmup_minutes": 1440,
+      "min_gap_minutes": 120,
+      "max_attempts": 100
+    }
+  }
+}

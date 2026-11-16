@@ -21,6 +21,7 @@ from aiops.simulator.dataset import SimulatedSeries, generate_dataset
 from aiops.simulator.generator import SignalComponents, generate_base_signal
 from aiops.simulator.labels import labels_from_events
 from aiops.simulator.scheduler import PlacementError, inject_anomalies
+from aiops.simulator.storage import config_from_dict, config_to_dict, save_dataset
 
 __all__ = [
     "AnomalyEvent",
@@ -35,6 +36,8 @@ __all__ = [
     "SignalComponents",
     "SimulatedSeries",
     "SpikeConfig",
+    "config_from_dict",
+    "config_to_dict",
     "generate_base_signal",
     "generate_dataset",
     "inject_anomalies",
@@ -43,4 +46,5 @@ __all__ = [
     "inject_seasonal_suppression",
     "inject_spike",
     "labels_from_events",
+    "save_dataset",
 ]

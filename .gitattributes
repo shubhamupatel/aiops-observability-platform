@@ -1,0 +1,2 @@
+# generated data keeps "\n" line endings on every OS, so the regenerate-and-compare test can match it byte for byte
+data/** text eol=lf
