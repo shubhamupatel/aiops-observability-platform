@@ -31,6 +31,11 @@ class AnomalyEvent:
         if not 0 <= self.start < self.end:
             raise ValueError(f"need 0 <= start < end, got start={self.start}, end={self.end}")
 
+    @property
+    def changed_start(self) -> int:
+        """First sample whose data the anomaly changed: start, except for drift, whose unlabeled ramp begins earlier."""
+        return int(self.params.get("onset", self.start))
+
 
 def inject_spike(
     components: SignalComponents,
