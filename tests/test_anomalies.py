@@ -6,11 +6,13 @@ import pytest
 from aiops.simulator import (
     AnomalyEvent,
     AnomalyKind,
+    DriftConfig,
     LevelShiftConfig,
     MetricConfig,
     SeasonalSuppressionConfig,
     SpikeConfig,
     generate_base_signal,
+    inject_drift,
     inject_level_shift,
     inject_seasonal_suppression,
     inject_spike,
@@ -298,3 +300,118 @@ def test_suppression_config_rejects_bad_ranges(duration_range_minutes):
 def test_metric_config_rejects_bad_suppression_settings(seasonal_suppression):
     with pytest.raises(ValueError):
         MetricConfig(seasonal_suppression=seasonal_suppression)
+
+
+# Verifies that a drift climbs in equal steps to its magnitude, touches nothing else, and is gone right after its ramp.
+@pytest.mark.parametrize("start", [0, 1000, N_STEPS - 288])	# first sample, middle, last start with room for the longest ramp
+def test_drift_ramps_linearly_then_drops_back(series, start):
+    drifted, event = inject_drift(series, start, DriftConfig(), np.random.default_rng(SEED))
+    added = drifted.level - series.level
+    onset = event.params["onset"]
+    assert np.flatnonzero(added).tolist() == list(range(onset, event.end))	# changed exactly from onset to end
+    np.testing.assert_allclose(np.diff(added[onset:event.end]), event.params["magnitude"] / (event.end - onset))	# equal steps
+    assert added[event.end - 1] == pytest.approx(event.params["magnitude"])
+    np.testing.assert_array_equal(drifted.seasonal, series.seasonal)
+    np.testing.assert_array_equal(drifted.noise, series.noise)
+
+
+# Verifies that the labeled window starts at the first sample where the drift has added at least the threshold.
+def test_drift_label_starts_at_threshold_crossing(series):
+    rng = np.random.default_rng(SEED)
+    for _ in range(50):	# many different magnitudes and durations
+        drifted, event = inject_drift(series, 1000, DriftConfig(), rng)
+        added = drifted.level - series.level
+        assert added[event.start] >= 5.0
+        assert added[event.start - 1] < 5.0
+        assert event.start > event.params["onset"]	# the first part of every ramp is too small to label
+
+
+# Verifies the event's type and recorded parameters, including the rate and the true onset.
+def test_drift_event_records_the_drift(series):
+    _, event = inject_drift(series, 1000, DriftConfig(), np.random.default_rng(SEED))
+    assert event.kind is AnomalyKind.DRIFT
+    assert event.kind == "drift"
+    assert set(event.params) == {"magnitude", "rate_per_hour", "onset"}
+    assert event.params["onset"] == 1000
+    hours = (event.end - event.params["onset"]) * 5 / 60
+    assert event.params["rate_per_hour"] == pytest.approx(event.params["magnitude"] / hours)
+
+
+# Verifies that injecting a drift doesn't modify the original series.
+def test_drift_leaves_input_untouched(series):
+    level_before = series.level.copy()
+    inject_drift(series, 1000, DriftConfig(), np.random.default_rng(SEED))
+    np.testing.assert_array_equal(series.level, level_before)
+
+
+# Verifies that the same seed gives the same magnitude and duration.
+def test_drift_same_seed_gives_same_event(series):
+    _, first = inject_drift(series, 1000, DriftConfig(), np.random.default_rng(SEED))
+    _, second = inject_drift(series, 1000, DriftConfig(), np.random.default_rng(SEED))
+    assert first == second
+
+
+# Verifies that drawn magnitudes and ramp lengths stay inside their configured ranges.
+def test_drift_draws_stay_in_range(series):
+    rng = np.random.default_rng(SEED)
+    events = [inject_drift(series, 1000, DriftConfig(), rng)[1] for _ in range(200)]
+    magnitudes = [event.params["magnitude"] for event in events]
+    ramp_lengths = [event.end - event.params["onset"] for event in events]
+    assert 10.0 <= min(magnitudes) and max(magnitudes) <= 40.0
+    assert 72 <= min(ramp_lengths) and max(ramp_lengths) <= 288	# 360 to 1440 minutes at 5 minutes per sample
+
+
+# Verifies that both the shortest and the longest ramp can actually be drawn.
+def test_drift_duration_can_hit_both_ends(series):
+    config = DriftConfig(duration_range_minutes=(360, 370))	# 72 to 74 samples, so 100 draws hit every value
+    rng = np.random.default_rng(SEED)
+    ramp_lengths = set()
+    for _ in range(100):
+        _, event = inject_drift(series, 1000, config, rng)
+        ramp_lengths.add(event.end - event.params["onset"])
+    assert ramp_lengths == {72, 73, 74}	# 74 only shows up because of endpoint=True
+
+
+# Verifies that single-value ranges pin the ramp, the labeled window, and the rate.
+def test_fixed_ranges_pin_the_drift(series):
+    config = DriftConfig(magnitude_range=(21.0, 21.0), duration_range_minutes=(600, 600))	# 120 samples, 0.175 points per step
+    _, event = inject_drift(series, 1000, config, np.random.default_rng(SEED))
+    assert (event.params["onset"], event.end) == (1000, 1120)
+    assert event.start == 1028	# step 28 adds 4.9 points, step 29 adds 5.075
+    assert event.params["rate_per_hour"] == pytest.approx(2.1)	# 21 points over 10 hours
+
+
+# Verifies that starts outside the series, or too close to its end, are rejected.
+@pytest.mark.parametrize("start", [-1, N_STEPS - 287])	# before the series; one past the last start with room
+def test_drift_rejects_bad_starts(series, start):
+    with pytest.raises(ValueError):
+        inject_drift(series, start, DriftConfig(), np.random.default_rng(SEED))
+
+
+# Verifies that the drift config rejects invalid ranges and thresholds.
+@pytest.mark.parametrize(
+    "bad_field",
+    [
+        {"magnitude_range": (0.0, 10.0)},	# zero low end
+        {"duration_range_minutes": (1440, 360)},	# reversed order
+        {"label_threshold": 10.0},	# equal to the smallest magnitude, so a drift could end up with no labeled part
+        {"label_threshold": 0.0},	# would label the whole ramp, including samples that look normal
+    ],
+)
+def test_drift_config_rejects_bad_settings(bad_field):
+    with pytest.raises(ValueError):
+        DriftConfig(**bad_field)
+
+
+# Verifies the cross-section rules MetricConfig enforces for drifts.
+@pytest.mark.parametrize(
+    "drift",
+    [
+        DriftConfig(magnitude_range=(10.0, 45.0)),	# 59 + 45 = 104, past the 100% bound
+        DriftConfig(duration_range_minutes=(362, 1440)),	# 362 isn't a multiple of 5
+        DriftConfig(duration_range_minutes=(360, 20165)),	# longer than the 14-day series (20,160 minutes)
+    ],
+)
+def test_metric_config_rejects_bad_drift_settings(drift):
+    with pytest.raises(ValueError):
+        MetricConfig(drift=drift)

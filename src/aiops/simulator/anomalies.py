@@ -5,7 +5,7 @@ from enum import StrEnum
 
 import numpy as np
 
-from aiops.simulator.config import LevelShiftConfig, SeasonalSuppressionConfig, SpikeConfig
+from aiops.simulator.config import DriftConfig, LevelShiftConfig, SeasonalSuppressionConfig, SpikeConfig
 from aiops.simulator.generator import SignalComponents
 
 
@@ -15,6 +15,7 @@ class AnomalyKind(StrEnum):
     SPIKE = "spike"
     LEVEL_SHIFT = "level_shift"
     SEASONAL_SUPPRESSION = "seasonal_suppression"
+    DRIFT = "drift"
 
 
 @dataclass(frozen=True)
@@ -24,7 +25,7 @@ class AnomalyEvent:
     kind: AnomalyKind
     start: int	# first anomalous sample
     end: int	# one past the last anomalous sample, like a Python slice
-    params: dict[str, float]	# what was injected, like {"magnitude": 27.4}
+    params: dict[str, float | int]	# what was injected, like {"magnitude": 27.4}
 
     def __post_init__(self):
         if not 0 <= self.start < self.end:
@@ -45,7 +46,12 @@ def inject_spike(
     level = components.level.copy()	# create a writable copy; the original stays read-only and unchanged
     level[start] += magnitude
 
-    event = AnomalyEvent(AnomalyKind.SPIKE, start, start + 1, {"magnitude": magnitude})
+    event = AnomalyEvent(
+        kind=AnomalyKind.SPIKE,
+        start=start,
+        end=start + 1,
+        params={"magnitude": magnitude},
+    )
     return replace(components, level=level), event
 
 
@@ -65,7 +71,12 @@ def inject_level_shift(
     level = components.level.copy()
     level[start:end] += magnitude
 
-    event = AnomalyEvent(AnomalyKind.LEVEL_SHIFT, start, end, {"magnitude": magnitude})
+    event = AnomalyEvent(
+        kind=AnomalyKind.LEVEL_SHIFT,
+        start=start,
+        end=end,
+        params={"magnitude": magnitude},
+    )
     return replace(components, level=level), event
 
 
@@ -84,8 +95,42 @@ def inject_seasonal_suppression(
     seasonal = components.seasonal.copy()
     seasonal[start:end] = 0.0
 
-    event = AnomalyEvent(AnomalyKind.SEASONAL_SUPPRESSION, start, end, {"magnitude": magnitude})
+    event = AnomalyEvent(
+        kind=AnomalyKind.SEASONAL_SUPPRESSION,
+        start=start,
+        end=end,
+        params={"magnitude": magnitude},
+    )
     return replace(components, seasonal=seasonal), event
+
+
+def inject_drift(
+    components: SignalComponents,
+    start: int,
+    config: DriftConfig,
+    rng: np.random.Generator,
+) -> tuple[SignalComponents, AnomalyEvent]:
+    """Inject a drift: climb linearly by a random amount over a random duration, then drop back. Returns a new series."""
+    shortest, longest = _duration_bounds(components, start, config.duration_range_minutes)
+
+    low, high = config.magnitude_range
+    magnitude = float(rng.uniform(low, high))	# drawn before the duration, same order as the level shift
+    n_samples = int(rng.integers(shortest, longest, endpoint=True))
+    end = start + n_samples
+    ramp = np.linspace(magnitude / n_samples, magnitude, n_samples)	# equal steps, ending exactly at magnitude
+    level = components.level.copy()
+    level[start:end] += ramp
+
+    labeled_start = start + int(np.argmax(ramp >= config.label_threshold))	# first sample where the drift has added at least the threshold
+    rate_per_hour = magnitude / (n_samples * components.interval_minutes / 60)
+
+    event = AnomalyEvent(
+        kind=AnomalyKind.DRIFT,
+        start=labeled_start,
+        end=end,
+        params={"magnitude": magnitude, "rate_per_hour": rate_per_hour, "onset": start},	# onset is where the ramp actually began
+    )
+    return replace(components, level=level), event
 
 
 def _check_start(start: int, n_steps: int) -> None:

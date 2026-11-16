@@ -87,13 +87,31 @@ class SeasonalSuppressionConfig:
 
 
 @dataclass(frozen=True)
+class DriftConfig:
+    """Parameters for drift: a slow linear climb that drops back abruptly, like a memory leak ended by a restart."""
+
+    magnitude_range: tuple[float, float] = (10.0, 40.0)	# total CPU points the ramp climbs, drawn uniformly
+    duration_range_minutes: tuple[int, int] = (360, 1440)	# how long the ramp lasts, drawn uniformly (6 to 24 hours)
+    label_threshold: float = 5.0	# samples count as anomalous once the drift has added at least this many points
+
+    def __post_init__(self):
+        _check_range("magnitude_range", self.magnitude_range)
+        _check_range("duration_range_minutes", self.duration_range_minutes)
+        if not 0 < self.label_threshold < self.magnitude_range[0]:
+            raise ValueError(
+                f"label_threshold must be positive and below the smallest magnitude, got {self.label_threshold}"
+            )
+
+
+@dataclass(frozen=True)
 class MetricConfig:
-    """Top-level simulator config (the base signal plus one sub-config per anomaly type)"""
+    """Top-level simulator config: the base signal plus one sub-config per anomaly type."""
 
     base: BaseSignalConfig = field(default_factory=BaseSignalConfig)
     spike: SpikeConfig = field(default_factory=SpikeConfig)
     level_shift: LevelShiftConfig = field(default_factory=LevelShiftConfig)
     seasonal_suppression: SeasonalSuppressionConfig = field(default_factory=SeasonalSuppressionConfig)
+    drift: DriftConfig = field(default_factory=DriftConfig)
 
     def __post_init__(self):
         self._check_headroom()
@@ -105,6 +123,7 @@ class MetricConfig:
         largest_jumps = {	# anomalies never overlap, so each type only has to fit on its own
             "spike": self.spike.magnitude_range[1],
             "level_shift": self.level_shift.magnitude_range[1],
+            "drift": self.drift.magnitude_range[1],
         }	# seasonal_suppression isn't listed: flattening the cycle moves values toward the baseline, never past a bound
         for name, jump in largest_jumps.items():
             if normal_peak + jump > upper:
@@ -118,6 +137,7 @@ class MetricConfig:
         duration_ranges = {
             "level_shift": self.level_shift.duration_range_minutes,
             "seasonal_suppression": self.seasonal_suppression.duration_range_minutes,
+            "drift": self.drift.duration_range_minutes,
         }
         for name, (shortest, longest) in duration_ranges.items():
             if shortest % interval or longest % interval:
