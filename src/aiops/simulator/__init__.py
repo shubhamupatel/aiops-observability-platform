@@ -17,7 +17,9 @@ from aiops.simulator.config import (
     SeasonalSuppressionConfig,
     SpikeConfig,
 )
+from aiops.simulator.dataset import SimulatedSeries, generate_dataset
 from aiops.simulator.generator import SignalComponents, generate_base_signal
+from aiops.simulator.labels import labels_from_events
 from aiops.simulator.scheduler import PlacementError, inject_anomalies
 
 __all__ = [
@@ -31,11 +33,14 @@ __all__ = [
     "ScheduleConfig",
     "SeasonalSuppressionConfig",
     "SignalComponents",
+    "SimulatedSeries",
     "SpikeConfig",
     "generate_base_signal",
+    "generate_dataset",
     "inject_anomalies",
     "inject_drift",
     "inject_level_shift",
     "inject_seasonal_suppression",
     "inject_spike",
+    "labels_from_events",
 ]
