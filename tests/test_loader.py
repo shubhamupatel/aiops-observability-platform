@@ -180,3 +180,23 @@ def test_series_and_events_must_cover_the_same_series(saved, remove):
 def test_folder_without_series_is_rejected(tmp_path):
     with pytest.raises(ValueError, match="no series CSVs"):
         load_synthetic_dataset(tmp_path)
+
+
+# Verifies that the sampling interval is read from the timestamps.
+def test_interval_is_read_from_the_timestamps(saved):
+    _, out_dir = saved
+    assert load_synthetic_dataset(out_dir)[0].series.interval_minutes == 5.0
+
+
+# Verifies that a series with uneven gaps, or a single sample, has no interval.
+@pytest.mark.parametrize(
+    "timestamps",
+    [
+        ["2026-01-05 00:00", "2026-01-05 00:05", "2026-01-05 00:15"],	# a 5-minute gap, then a 10-minute one
+        ["2026-01-05 00:00"],	# one sample, so no gap at all
+    ],
+)
+def test_interval_needs_evenly_spaced_samples(timestamps):
+    series = MetricSeries("gappy", np.array(timestamps, dtype="datetime64[m]"), np.zeros(len(timestamps)))
+    with pytest.raises(ValueError, match="^gappy"):
+        series.interval_minutes	# reading the property is what raises

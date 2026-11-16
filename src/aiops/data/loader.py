@@ -35,6 +35,14 @@ class MetricSeries:
         for array in (self.timestamps, self.values):
             array.flags.writeable = False	# every detector reads the same arrays, so no in-place edits
 
+    @property
+    def interval_minutes(self) -> float:
+        """Minutes between samples, like 5.0. Raises unless the samples are evenly spaced, since durations get turned into sample counts."""
+        gaps = np.diff(self.timestamps)
+        if len(gaps) == 0 or (gaps != gaps[0]).any():
+            raise ValueError(f"{self.name}: needs at least two evenly spaced samples")
+        return float(gaps[0] / np.timedelta64(1, "m"))
+
 
 @dataclass(frozen=True, eq=False)
 class LabeledSeries:
