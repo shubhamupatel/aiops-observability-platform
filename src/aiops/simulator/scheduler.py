@@ -60,15 +60,17 @@ def _place_one(
     placed: list[AnomalyEvent],
     rng: np.random.Generator,
 ) -> tuple[SignalComponents, AnomalyEvent]:
-    """Try random starts until the injected anomaly keeps its gap from every placed one."""
+    """Try random starts until the injected anomaly keeps its gap from every placed one. Every attempt draws the same magnitude and duration, so collisions can't bias them."""
     interval = components.interval_minutes
     earliest = schedule.warmup_minutes // interval
     latest = len(components.level) - _longest_samples(kind_config, interval)	# the injectors need room for the longest duration
     gap = schedule.min_gap_minutes // interval
+    param_seed = int(rng.integers(2**63))	# drawn once per anomaly, so only the start is retried
 
     for _ in range(schedule.max_attempts):
         start = int(rng.integers(earliest, latest, endpoint=True))
-        candidate, event = inject(components, start, kind_config, rng)
+        param_rng = np.random.default_rng(param_seed)	# rebuilt every attempt, so it draws the same numbers each time
+        candidate, event = inject(components, start, kind_config, param_rng)
         if not any(_too_close(event, other, gap) for other in placed):
             return candidate, event	# rejected candidates are simply dropped; the injectors never changed the input
     raise PlacementError(f"couldn't place a {event.kind} in {schedule.max_attempts} attempts; try fewer or shorter anomalies")

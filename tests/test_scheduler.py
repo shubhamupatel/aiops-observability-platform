@@ -17,7 +17,9 @@ from aiops.simulator import (
     SpikeConfig,
     generate_base_signal,
     inject_anomalies,
+    inject_level_shift,
 )
+from aiops.simulator.scheduler import _place_one
 
 SEEDS = range(20)	# placement is random, so the rules are checked across many different schedules
 WARMUP = 288	# 1440 minutes at 5 minutes per sample
@@ -114,6 +116,26 @@ def test_crowded_schedule_raises_placement_error():
     )
     with pytest.raises(PlacementError):
         _schedule(config, 42)
+
+
+# Verifies that every retry reuses the same magnitude and duration, so collisions can't bias placed anomalies toward short ones.
+def test_retries_reuse_the_same_parameters():
+    base = generate_base_signal(MetricConfig().base, np.random.default_rng(42))
+    blocker = AnomalyEvent(kind=AnomalyKind.LEVEL_SHIFT, start=WARMUP, end=3500, params={"magnitude": 10.0})	# leaves room only near the end, so most starts collide
+    attempts: list[AnomalyEvent] = []
+
+    def recording_inject(components, start, config, rng):	# the real injector, but it records every attempt
+        candidate, event = inject_level_shift(components, start, config, rng)
+        attempts.append(event)
+        return candidate, event
+
+    attempt_counts = []
+    for seed in SEEDS:
+        attempts.clear()
+        _place_one(base, recording_inject, LevelShiftConfig(), ScheduleConfig(), [blocker], np.random.default_rng(seed))
+        assert len({(event.params["magnitude"], event.end - event.start) for event in attempts}) == 1	# one magnitude and duration across every attempt
+        attempt_counts.append(len(attempts))
+    assert max(attempt_counts) > 1	# the check above only means something if the scheduler actually retried
 
 
 # Verifies that changed_start is the onset for drift and the start for every other type.
