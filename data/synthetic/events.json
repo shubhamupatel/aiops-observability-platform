@@ -1,425 +1,425 @@
 {
   "series_00": [
     {
+      "kind": "spike",
+      "start": 621,
+      "end": 622,
+      "first_time": "2026-01-07 03:45:00",
+      "last_time": "2026-01-07 03:45:00",
+      "params": {
+        "magnitude": 25.697163085856047
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 679,
+      "end": 680,
+      "first_time": "2026-01-07 08:35:00",
+      "last_time": "2026-01-07 08:35:00",
+      "params": {
+        "magnitude": 15.770413848100203
+      }
+    },
+    {
+      "kind": "drift",
+      "start": 1490,
+      "end": 1594,
+      "first_time": "2026-01-10 04:10:00",
+      "last_time": "2026-01-10 12:45:00",
+      "params": {
+        "magnitude": 14.863001248285626,
+        "rate_per_hour": 1.1433077883296634,
+        "onset": 1438
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 1727,
+      "end": 1801,
+      "first_time": "2026-01-10 23:55:00",
+      "last_time": "2026-01-11 06:00:00",
+      "params": {
+        "magnitude": 23.107301339530014
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 2576,
+      "end": 2577,
+      "first_time": "2026-01-13 22:40:00",
+      "last_time": "2026-01-13 22:40:00",
+      "params": {
+        "magnitude": 22.961869138064515
+      }
+    },
+    {
       "kind": "seasonal_suppression",
-      "start": 2242,
-      "end": 2521,
-      "first_time": "2026-01-12 18:50:00",
-      "last_time": "2026-01-13 18:00:00",
+      "start": 2995,
+      "end": 3257,
+      "first_time": "2026-01-15 09:35:00",
+      "last_time": "2026-01-16 07:20:00",
       "params": {
         "magnitude": 15.0
       }
     },
     {
       "kind": "level_shift",
-      "start": 2606,
-      "end": 2673,
-      "first_time": "2026-01-14 01:10:00",
-      "last_time": "2026-01-14 06:40:00",
+      "start": 3663,
+      "end": 3713,
+      "first_time": "2026-01-17 17:15:00",
+      "last_time": "2026-01-17 21:20:00",
       "params": {
-        "magnitude": 11.072191355724005
-      }
-    },
-    {
-      "kind": "level_shift",
-      "start": 2767,
-      "end": 2810,
-      "first_time": "2026-01-14 14:35:00",
-      "last_time": "2026-01-14 18:05:00",
-      "params": {
-        "magnitude": 7.0929315589597985
-      }
-    },
-    {
-      "kind": "drift",
-      "start": 3018,
-      "end": 3139,
-      "first_time": "2026-01-15 11:30:00",
-      "last_time": "2026-01-15 21:30:00",
-      "params": {
-        "magnitude": 31.27580100784867,
-        "rate_per_hour": 2.606316750654056,
-        "onset": 2995
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 3182,
-      "end": 3183,
-      "first_time": "2026-01-16 01:10:00",
-      "last_time": "2026-01-16 01:10:00",
-      "params": {
-        "magnitude": 29.82266892508404
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 3581,
-      "end": 3582,
-      "first_time": "2026-01-17 10:25:00",
-      "last_time": "2026-01-17 10:25:00",
-      "params": {
-        "magnitude": 28.336676785861403
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 4029,
-      "end": 4030,
-      "first_time": "2026-01-18 23:45:00",
-      "last_time": "2026-01-18 23:45:00",
-      "params": {
-        "magnitude": 23.808610579120398
+        "magnitude": 20.023145817745423
       }
     }
   ],
   "series_01": [
     {
-      "kind": "spike",
-      "start": 530,
-      "end": 531,
-      "first_time": "2026-01-06 20:10:00",
-      "last_time": "2026-01-06 20:10:00",
-      "params": {
-        "magnitude": 21.844991442353322
-      }
-    },
-    {
-      "kind": "level_shift",
-      "start": 917,
-      "end": 991,
-      "first_time": "2026-01-08 04:25:00",
-      "last_time": "2026-01-08 10:30:00",
-      "params": {
-        "magnitude": 5.855075847065785
-      }
-    },
-    {
-      "kind": "drift",
-      "start": 1369,
-      "end": 1509,
-      "first_time": "2026-01-09 18:05:00",
-      "last_time": "2026-01-10 05:40:00",
-      "params": {
-        "magnitude": 12.209192495053038,
-        "rate_per_hour": 0.6181869617748373,
-        "onset": 1272
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 1975,
-      "end": 1976,
-      "first_time": "2026-01-11 20:35:00",
-      "last_time": "2026-01-11 20:35:00",
-      "params": {
-        "magnitude": 23.892143333157424
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 2010,
-      "end": 2011,
-      "first_time": "2026-01-11 23:30:00",
-      "last_time": "2026-01-11 23:30:00",
-      "params": {
-        "magnitude": 30.51860145032635
-      }
-    },
-    {
       "kind": "seasonal_suppression",
-      "start": 2175,
-      "end": 2421,
-      "first_time": "2026-01-12 13:15:00",
-      "last_time": "2026-01-13 09:40:00",
+      "start": 1272,
+      "end": 1559,
+      "first_time": "2026-01-09 10:00:00",
+      "last_time": "2026-01-10 09:50:00",
       "params": {
         "magnitude": 15.0
       }
     },
     {
       "kind": "level_shift",
-      "start": 3632,
-      "end": 3701,
-      "first_time": "2026-01-17 14:40:00",
-      "last_time": "2026-01-17 20:20:00",
+      "start": 1992,
+      "end": 2053,
+      "first_time": "2026-01-11 22:00:00",
+      "last_time": "2026-01-12 03:00:00",
       "params": {
-        "magnitude": 18.139484755247345
+        "magnitude": 20.6968543572152
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 2373,
+      "end": 2397,
+      "first_time": "2026-01-13 05:45:00",
+      "last_time": "2026-01-13 07:40:00",
+      "params": {
+        "magnitude": 9.417932141389684
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 2830,
+      "end": 2831,
+      "first_time": "2026-01-14 19:50:00",
+      "last_time": "2026-01-14 19:50:00",
+      "params": {
+        "magnitude": 34.121640760933346
+      }
+    },
+    {
+      "kind": "drift",
+      "start": 2987,
+      "end": 3151,
+      "first_time": "2026-01-15 08:55:00",
+      "last_time": "2026-01-15 22:30:00",
+      "params": {
+        "magnitude": 16.48412874860369,
+        "rate_per_hour": 0.8417427446095502,
+        "onset": 2916
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 3571,
+      "end": 3572,
+      "first_time": "2026-01-17 09:35:00",
+      "last_time": "2026-01-17 09:35:00",
+      "params": {
+        "magnitude": 34.72626814633219
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 3720,
+      "end": 3721,
+      "first_time": "2026-01-17 22:00:00",
+      "last_time": "2026-01-17 22:00:00",
+      "params": {
+        "magnitude": 16.880677546509727
       }
     }
   ],
   "series_02": [
     {
-      "kind": "spike",
-      "start": 802,
-      "end": 803,
-      "first_time": "2026-01-07 18:50:00",
-      "last_time": "2026-01-07 18:50:00",
-      "params": {
-        "magnitude": 18.005685185598566
-      }
-    },
-    {
-      "kind": "drift",
-      "start": 1811,
-      "end": 1950,
-      "first_time": "2026-01-11 06:55:00",
-      "last_time": "2026-01-11 18:25:00",
-      "params": {
-        "magnitude": 33.4026833603292,
-        "rate_per_hour": 2.459093253521168,
-        "onset": 1787
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 2193,
-      "end": 2194,
-      "first_time": "2026-01-12 14:45:00",
-      "last_time": "2026-01-12 14:45:00",
-      "params": {
-        "magnitude": 28.53816540783508
-      }
-    },
-    {
       "kind": "level_shift",
-      "start": 2459,
-      "end": 2498,
-      "first_time": "2026-01-13 12:55:00",
-      "last_time": "2026-01-13 16:05:00",
+      "start": 1475,
+      "end": 1500,
+      "first_time": "2026-01-10 02:55:00",
+      "last_time": "2026-01-10 04:55:00",
       "params": {
-        "magnitude": 15.381221573702062
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 2572,
-      "end": 2573,
-      "first_time": "2026-01-13 22:20:00",
-      "last_time": "2026-01-13 22:20:00",
-      "params": {
-        "magnitude": 13.02699832487644
-      }
-    },
-    {
-      "kind": "level_shift",
-      "start": 2728,
-      "end": 2796,
-      "first_time": "2026-01-14 11:20:00",
-      "last_time": "2026-01-14 16:55:00",
-      "params": {
-        "magnitude": 17.21770213369377
+        "magnitude": 18.17591592915668
       }
     },
     {
       "kind": "seasonal_suppression",
-      "start": 2909,
-      "end": 3176,
-      "first_time": "2026-01-15 02:25:00",
-      "last_time": "2026-01-16 00:35:00",
+      "start": 1787,
+      "end": 2017,
+      "first_time": "2026-01-11 04:55:00",
+      "last_time": "2026-01-12 00:00:00",
       "params": {
         "magnitude": 15.0
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 2096,
+      "end": 2097,
+      "first_time": "2026-01-12 06:40:00",
+      "last_time": "2026-01-12 06:40:00",
+      "params": {
+        "magnitude": 33.86080086149289
+      }
+    },
+    {
+      "kind": "drift",
+      "start": 2392,
+      "end": 2482,
+      "first_time": "2026-01-13 07:20:00",
+      "last_time": "2026-01-13 14:45:00",
+      "params": {
+        "magnitude": 14.35568997920158,
+        "rate_per_hour": 1.2574326989081677,
+        "onset": 2345
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 2575,
+      "end": 2576,
+      "first_time": "2026-01-13 22:35:00",
+      "last_time": "2026-01-13 22:35:00",
+      "params": {
+        "magnitude": 20.18786421884123
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 2601,
+      "end": 2602,
+      "first_time": "2026-01-14 00:45:00",
+      "last_time": "2026-01-14 00:45:00",
+      "params": {
+        "magnitude": 18.812896435032997
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 3295,
+      "end": 3377,
+      "first_time": "2026-01-16 10:35:00",
+      "last_time": "2026-01-16 17:20:00",
+      "params": {
+        "magnitude": 8.686096278706968
       }
     }
   ],
   "series_03": [
     {
-      "kind": "spike",
-      "start": 588,
-      "end": 589,
-      "first_time": "2026-01-07 01:00:00",
-      "last_time": "2026-01-07 01:00:00",
-      "params": {
-        "magnitude": 16.884792851156504
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 912,
-      "end": 913,
-      "first_time": "2026-01-08 04:00:00",
-      "last_time": "2026-01-08 04:00:00",
-      "params": {
-        "magnitude": 34.91418308443214
-      }
-    },
-    {
-      "kind": "level_shift",
-      "start": 972,
-      "end": 1054,
-      "first_time": "2026-01-08 09:00:00",
-      "last_time": "2026-01-08 15:45:00",
-      "params": {
-        "magnitude": 6.52846731941132
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 1798,
-      "end": 1799,
-      "first_time": "2026-01-11 05:50:00",
-      "last_time": "2026-01-11 05:50:00",
-      "params": {
-        "magnitude": 13.863063581314279
-      }
-    },
-    {
       "kind": "drift",
-      "start": 1940,
-      "end": 2010,
-      "first_time": "2026-01-11 17:40:00",
-      "last_time": "2026-01-11 23:25:00",
+      "start": 492,
+      "end": 592,
+      "first_time": "2026-01-06 17:00:00",
+      "last_time": "2026-01-07 01:15:00",
       "params": {
-        "magnitude": 34.41956641266198,
-        "rate_per_hour": 5.099195024098071,
-        "onset": 1929
+        "magnitude": 14.144469811642427,
+        "rate_per_hour": 1.10216647882928,
+        "onset": 438
       }
     },
     {
-      "kind": "level_shift",
-      "start": 2401,
-      "end": 2471,
-      "first_time": "2026-01-13 08:05:00",
-      "last_time": "2026-01-13 13:50:00",
+      "kind": "spike",
+      "start": 990,
+      "end": 991,
+      "first_time": "2026-01-08 10:30:00",
+      "last_time": "2026-01-08 10:30:00",
       "params": {
-        "magnitude": 24.212630123353474
+        "magnitude": 10.633870128549603
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 1644,
+      "end": 1645,
+      "first_time": "2026-01-10 17:00:00",
+      "last_time": "2026-01-10 17:00:00",
+      "params": {
+        "magnitude": 12.444997862313103
       }
     },
     {
       "kind": "seasonal_suppression",
-      "start": 3230,
-      "end": 3508,
-      "first_time": "2026-01-16 05:10:00",
-      "last_time": "2026-01-17 04:15:00",
+      "start": 1929,
+      "end": 2163,
+      "first_time": "2026-01-11 16:45:00",
+      "last_time": "2026-01-12 12:10:00",
       "params": {
         "magnitude": 15.0
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 3372,
+      "end": 3373,
+      "first_time": "2026-01-16 17:00:00",
+      "last_time": "2026-01-16 17:00:00",
+      "params": {
+        "magnitude": 34.607592188664185
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 3463,
+      "end": 3485,
+      "first_time": "2026-01-17 00:35:00",
+      "last_time": "2026-01-17 02:20:00",
+      "params": {
+        "magnitude": 23.80791096385028
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 3793,
+      "end": 3806,
+      "first_time": "2026-01-18 04:05:00",
+      "last_time": "2026-01-18 05:05:00",
+      "params": {
+        "magnitude": 8.768805819763747
       }
     }
   ],
   "series_04": [
     {
-      "kind": "level_shift",
-      "start": 1216,
-      "end": 1233,
-      "first_time": "2026-01-09 05:20:00",
-      "last_time": "2026-01-09 06:40:00",
+      "kind": "spike",
+      "start": 316,
+      "end": 317,
+      "first_time": "2026-01-06 02:20:00",
+      "last_time": "2026-01-06 02:20:00",
       "params": {
-        "magnitude": 14.234699627479898
+        "magnitude": 37.231655949040984
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 504,
+      "end": 539,
+      "first_time": "2026-01-06 18:00:00",
+      "last_time": "2026-01-06 20:50:00",
+      "params": {
+        "magnitude": 7.335207267679564
       }
     },
     {
       "kind": "spike",
-      "start": 1260,
-      "end": 1261,
-      "first_time": "2026-01-09 09:00:00",
-      "last_time": "2026-01-09 09:00:00",
+      "start": 924,
+      "end": 925,
+      "first_time": "2026-01-08 05:00:00",
+      "last_time": "2026-01-08 05:00:00",
       "params": {
-        "magnitude": 37.46018763311946
+        "magnitude": 33.80158031546223
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 1216,
+      "end": 1302,
+      "first_time": "2026-01-09 05:20:00",
+      "last_time": "2026-01-09 12:25:00",
+      "params": {
+        "magnitude": 24.49933798444008
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 1728,
+      "end": 1729,
+      "first_time": "2026-01-11 00:00:00",
+      "last_time": "2026-01-11 00:00:00",
+      "params": {
+        "magnitude": 24.95626957555616
       }
     },
     {
       "kind": "seasonal_suppression",
-      "start": 1532,
-      "end": 1711,
-      "first_time": "2026-01-10 07:40:00",
-      "last_time": "2026-01-10 22:30:00",
+      "start": 2676,
+      "end": 2847,
+      "first_time": "2026-01-14 07:00:00",
+      "last_time": "2026-01-14 21:10:00",
       "params": {
         "magnitude": 15.0
       }
     },
     {
-      "kind": "level_shift",
-      "start": 2548,
-      "end": 2626,
-      "first_time": "2026-01-13 20:20:00",
-      "last_time": "2026-01-14 02:45:00",
-      "params": {
-        "magnitude": 9.948653009706486
-      }
-    },
-    {
       "kind": "drift",
-      "start": 2778,
-      "end": 2891,
-      "first_time": "2026-01-14 15:30:00",
-      "last_time": "2026-01-15 00:50:00",
+      "start": 3089,
+      "end": 3240,
+      "first_time": "2026-01-15 17:25:00",
+      "last_time": "2026-01-16 05:55:00",
       "params": {
-        "magnitude": 10.532171626595607,
-        "rate_per_hour": 0.5878421372983594,
-        "onset": 2676
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 3338,
-      "end": 3339,
-      "first_time": "2026-01-16 14:10:00",
-      "last_time": "2026-01-16 14:10:00",
-      "params": {
-        "magnitude": 10.231082243608052
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 3614,
-      "end": 3615,
-      "first_time": "2026-01-17 13:10:00",
-      "last_time": "2026-01-17 13:10:00",
-      "params": {
-        "magnitude": 35.88349196941785
+        "magnitude": 14.271538070985862,
+        "rate_per_hour": 0.7381830036716825,
+        "onset": 3008
       }
     }
   ],
   "series_05": [
     {
-      "kind": "spike",
-      "start": 1286,
-      "end": 1287,
-      "first_time": "2026-01-09 11:10:00",
-      "last_time": "2026-01-09 11:10:00",
+      "kind": "level_shift",
+      "start": 497,
+      "end": 555,
+      "first_time": "2026-01-06 17:25:00",
+      "last_time": "2026-01-06 22:10:00",
       "params": {
-        "magnitude": 24.75084212800424
+        "magnitude": 15.234665094984162
       }
     },
     {
-      "kind": "drift",
-      "start": 1882,
-      "end": 2010,
-      "first_time": "2026-01-11 12:50:00",
-      "last_time": "2026-01-11 23:25:00",
+      "kind": "spike",
+      "start": 1010,
+      "end": 1011,
+      "first_time": "2026-01-08 12:10:00",
+      "last_time": "2026-01-08 12:10:00",
       "params": {
-        "magnitude": 17.622880929084662,
-        "rate_per_hour": 1.1880593884776176,
-        "onset": 1832
+        "magnitude": 29.845025941273814
       }
     },
     {
       "kind": "level_shift",
-      "start": 2034,
-      "end": 2125,
-      "first_time": "2026-01-12 01:30:00",
-      "last_time": "2026-01-12 09:00:00",
+      "start": 1215,
+      "end": 1282,
+      "first_time": "2026-01-09 05:15:00",
+      "last_time": "2026-01-09 10:45:00",
       "params": {
-        "magnitude": 15.793155240219965
+        "magnitude": 18.42076773298332
+      }
+    },
+    {
+      "kind": "drift",
+      "start": 2041,
+      "end": 2225,
+      "first_time": "2026-01-12 02:05:00",
+      "last_time": "2026-01-12 17:20:00",
+      "params": {
+        "magnitude": 33.674757578174265,
+        "rate_per_hour": 1.870819865454126,
+        "onset": 2009
       }
     },
     {
       "kind": "seasonal_suppression",
-      "start": 2953,
-      "end": 3217,
-      "first_time": "2026-01-15 06:05:00",
-      "last_time": "2026-01-16 04:00:00",
+      "start": 3026,
+      "end": 3214,
+      "first_time": "2026-01-15 12:10:00",
+      "last_time": "2026-01-16 03:45:00",
       "params": {
         "magnitude": 15.0
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 3658,
-      "end": 3659,
-      "first_time": "2026-01-17 16:50:00",
-      "last_time": "2026-01-17 16:50:00",
-      "params": {
-        "magnitude": 33.828007256333876
       }
     },
     {
@@ -429,29 +429,29 @@
       "first_time": "2026-01-17 20:40:00",
       "last_time": "2026-01-17 20:40:00",
       "params": {
-        "magnitude": 27.886206455479144
+        "magnitude": 28.46536506175224
       }
     },
     {
-      "kind": "level_shift",
-      "start": 3880,
-      "end": 3898,
-      "first_time": "2026-01-18 11:20:00",
-      "last_time": "2026-01-18 12:45:00",
+      "kind": "spike",
+      "start": 3973,
+      "end": 3974,
+      "first_time": "2026-01-18 19:05:00",
+      "last_time": "2026-01-18 19:05:00",
       "params": {
-        "magnitude": 18.27697141392712
+        "magnitude": 11.3514607370743
       }
     }
   ],
   "series_06": [
     {
-      "kind": "level_shift",
-      "start": 342,
+      "kind": "spike",
+      "start": 355,
       "end": 356,
-      "first_time": "2026-01-06 04:30:00",
+      "first_time": "2026-01-06 05:35:00",
       "last_time": "2026-01-06 05:35:00",
       "params": {
-        "magnitude": 14.33668651869346
+        "magnitude": 14.29234010731804
       }
     },
     {
@@ -461,39 +461,49 @@
       "first_time": "2026-01-06 08:40:00",
       "last_time": "2026-01-06 08:40:00",
       "params": {
-        "magnitude": 25.789397278165886
-      }
-    },
-    {
-      "kind": "seasonal_suppression",
-      "start": 1063,
-      "end": 1290,
-      "first_time": "2026-01-08 16:35:00",
-      "last_time": "2026-01-09 11:25:00",
-      "params": {
-        "magnitude": 15.0
+        "magnitude": 34.77816447512238
       }
     },
     {
       "kind": "drift",
-      "start": 2548,
-      "end": 2632,
-      "first_time": "2026-01-13 20:20:00",
-      "last_time": "2026-01-14 03:15:00",
+      "start": 1262,
+      "end": 1469,
+      "first_time": "2026-01-09 09:10:00",
+      "last_time": "2026-01-10 02:20:00",
       "params": {
-        "magnitude": 14.262553723000805,
-        "rate_per_hour": 1.3267491835349585,
-        "onset": 2503
+        "magnitude": 21.909320933477996,
+        "rate_per_hour": 0.98468858127991,
+        "onset": 1202
       }
     },
     {
-      "kind": "spike",
-      "start": 3242,
-      "end": 3243,
-      "first_time": "2026-01-16 06:10:00",
-      "last_time": "2026-01-16 06:10:00",
+      "kind": "level_shift",
+      "start": 1991,
+      "end": 2044,
+      "first_time": "2026-01-11 21:55:00",
+      "last_time": "2026-01-12 02:15:00",
       "params": {
-        "magnitude": 18.90546874446042
+        "magnitude": 6.883600467140112
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 2257,
+      "end": 2292,
+      "first_time": "2026-01-12 20:05:00",
+      "last_time": "2026-01-12 22:55:00",
+      "params": {
+        "magnitude": 21.857228953884075
+      }
+    },
+    {
+      "kind": "seasonal_suppression",
+      "start": 2503,
+      "end": 2695,
+      "first_time": "2026-01-13 16:35:00",
+      "last_time": "2026-01-14 08:30:00",
+      "params": {
+        "magnitude": 15.0
       }
     },
     {
@@ -503,17 +513,7 @@
       "first_time": "2026-01-16 10:35:00",
       "last_time": "2026-01-16 10:35:00",
       "params": {
-        "magnitude": 32.769714570455164
-      }
-    },
-    {
-      "kind": "level_shift",
-      "start": 3923,
-      "end": 4019,
-      "first_time": "2026-01-18 14:55:00",
-      "last_time": "2026-01-18 22:50:00",
-      "params": {
-        "magnitude": 20.957755088055265
+        "magnitude": 11.675917143362534
       }
     }
   ],
@@ -525,305 +525,303 @@
       "first_time": "2026-01-06 07:35:00",
       "last_time": "2026-01-06 07:35:00",
       "params": {
-        "magnitude": 24.730966824016782
+        "magnitude": 34.691160000905185
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 1083,
+      "end": 1138,
+      "first_time": "2026-01-08 18:15:00",
+      "last_time": "2026-01-08 22:45:00",
+      "params": {
+        "magnitude": 18.81209696908196
       }
     },
     {
       "kind": "seasonal_suppression",
-      "start": 1078,
-      "end": 1335,
-      "first_time": "2026-01-08 17:50:00",
-      "last_time": "2026-01-09 15:10:00",
+      "start": 1241,
+      "end": 1400,
+      "first_time": "2026-01-09 07:25:00",
+      "last_time": "2026-01-09 20:35:00",
       "params": {
         "magnitude": 15.0
       }
     },
     {
+      "kind": "spike",
+      "start": 1915,
+      "end": 1916,
+      "first_time": "2026-01-11 15:35:00",
+      "last_time": "2026-01-11 15:35:00",
+      "params": {
+        "magnitude": 25.243941633599324
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 2263,
+      "end": 2297,
+      "first_time": "2026-01-12 20:35:00",
+      "last_time": "2026-01-12 23:20:00",
+      "params": {
+        "magnitude": 17.3383657413725
+      }
+    },
+    {
       "kind": "drift",
-      "start": 1696,
-      "end": 1835,
-      "first_time": "2026-01-10 21:20:00",
-      "last_time": "2026-01-11 08:50:00",
+      "start": 2463,
+      "end": 2668,
+      "first_time": "2026-01-13 13:15:00",
+      "last_time": "2026-01-14 06:15:00",
       "params": {
-        "magnitude": 26.242786544966037,
-        "rate_per_hour": 1.8415990557870903,
-        "onset": 1664
-      }
-    },
-    {
-      "kind": "level_shift",
-      "start": 1874,
-      "end": 1935,
-      "first_time": "2026-01-11 12:10:00",
-      "last_time": "2026-01-11 17:10:00",
-      "params": {
-        "magnitude": 22.415893843714272
+        "magnitude": 34.402499199637745,
+        "rate_per_hour": 1.727322135546665,
+        "onset": 2429
       }
     },
     {
       "kind": "spike",
-      "start": 2362,
-      "end": 2363,
-      "first_time": "2026-01-13 04:50:00",
-      "last_time": "2026-01-13 04:50:00",
+      "start": 3578,
+      "end": 3579,
+      "first_time": "2026-01-17 10:10:00",
+      "last_time": "2026-01-17 10:10:00",
       "params": {
-        "magnitude": 23.495331697505037
-      }
-    },
-    {
-      "kind": "level_shift",
-      "start": 3293,
-      "end": 3310,
-      "first_time": "2026-01-16 10:25:00",
-      "last_time": "2026-01-16 11:45:00",
-      "params": {
-        "magnitude": 18.188892612537153
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 3614,
-      "end": 3615,
-      "first_time": "2026-01-17 13:10:00",
-      "last_time": "2026-01-17 13:10:00",
-      "params": {
-        "magnitude": 25.42419532337856
+        "magnitude": 34.54480418079946
       }
     }
   ],
   "series_08": [
     {
+      "kind": "spike",
+      "start": 460,
+      "end": 461,
+      "first_time": "2026-01-06 14:20:00",
+      "last_time": "2026-01-06 14:20:00",
+      "params": {
+        "magnitude": 19.098221731835004
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 551,
+      "end": 552,
+      "first_time": "2026-01-06 21:55:00",
+      "last_time": "2026-01-06 21:55:00",
+      "params": {
+        "magnitude": 17.644960964428734
+      }
+    },
+    {
+      "kind": "drift",
+      "start": 851,
+      "end": 977,
+      "first_time": "2026-01-07 22:55:00",
+      "last_time": "2026-01-08 09:20:00",
+      "params": {
+        "magnitude": 30.443147484489906,
+        "rate_per_hour": 2.4354517987591926,
+        "onset": 827
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 1065,
+      "end": 1142,
+      "first_time": "2026-01-08 16:45:00",
+      "last_time": "2026-01-08 23:05:00",
+      "params": {
+        "magnitude": 12.282360654717607
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 1382,
+      "end": 1441,
+      "first_time": "2026-01-09 19:10:00",
+      "last_time": "2026-01-10 00:00:00",
+      "params": {
+        "magnitude": 13.443869095301384
+      }
+    },
+    {
       "kind": "seasonal_suppression",
-      "start": 1658,
-      "end": 1921,
-      "first_time": "2026-01-10 18:10:00",
-      "last_time": "2026-01-11 16:00:00",
+      "start": 2356,
+      "end": 2574,
+      "first_time": "2026-01-13 04:20:00",
+      "last_time": "2026-01-13 22:25:00",
       "params": {
         "magnitude": 15.0
       }
     },
     {
-      "kind": "level_shift",
-      "start": 1965,
-      "end": 2053,
-      "first_time": "2026-01-11 19:45:00",
-      "last_time": "2026-01-12 03:00:00",
-      "params": {
-        "magnitude": 10.998315464516635
-      }
-    },
-    {
       "kind": "spike",
-      "start": 2253,
-      "end": 2254,
-      "first_time": "2026-01-12 19:45:00",
-      "last_time": "2026-01-12 19:45:00",
+      "start": 3728,
+      "end": 3729,
+      "first_time": "2026-01-17 22:40:00",
+      "last_time": "2026-01-17 22:40:00",
       "params": {
-        "magnitude": 24.700668968627273
-      }
-    },
-    {
-      "kind": "drift",
-      "start": 2389,
-      "end": 2461,
-      "first_time": "2026-01-13 07:05:00",
-      "last_time": "2026-01-13 13:00:00",
-      "params": {
-        "magnitude": 15.884883138017907,
-        "rate_per_hour": 1.815415215773475,
-        "onset": 2356
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 2526,
-      "end": 2527,
-      "first_time": "2026-01-13 18:30:00",
-      "last_time": "2026-01-13 18:30:00",
-      "params": {
-        "magnitude": 12.115292825635047
-      }
-    },
-    {
-      "kind": "level_shift",
-      "start": 3693,
-      "end": 3749,
-      "first_time": "2026-01-17 19:45:00",
-      "last_time": "2026-01-18 00:20:00",
-      "params": {
-        "magnitude": 5.9204565091673045
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 4000,
-      "end": 4001,
-      "first_time": "2026-01-18 21:20:00",
-      "last_time": "2026-01-18 21:20:00",
-      "params": {
-        "magnitude": 16.7218308181746
+        "magnitude": 20.67849538166111
       }
     }
   ],
   "series_09": [
     {
-      "kind": "spike",
-      "start": 568,
-      "end": 569,
-      "first_time": "2026-01-06 23:20:00",
-      "last_time": "2026-01-06 23:20:00",
-      "params": {
-        "magnitude": 33.02451067560343
-      }
-    },
-    {
       "kind": "seasonal_suppression",
-      "start": 682,
-      "end": 894,
-      "first_time": "2026-01-07 08:50:00",
-      "last_time": "2026-01-08 02:25:00",
+      "start": 589,
+      "end": 786,
+      "first_time": "2026-01-07 01:05:00",
+      "last_time": "2026-01-07 17:25:00",
       "params": {
         "magnitude": 15.0
       }
     },
     {
-      "kind": "spike",
-      "start": 1254,
-      "end": 1255,
-      "first_time": "2026-01-09 08:30:00",
-      "last_time": "2026-01-09 08:30:00",
-      "params": {
-        "magnitude": 21.307172924522188
-      }
-    },
-    {
-      "kind": "level_shift",
-      "start": 1936,
-      "end": 2014,
-      "first_time": "2026-01-11 17:20:00",
-      "last_time": "2026-01-11 23:45:00",
-      "params": {
-        "magnitude": 13.787541002079378
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 2785,
-      "end": 2786,
-      "first_time": "2026-01-14 16:05:00",
-      "last_time": "2026-01-14 16:05:00",
-      "params": {
-        "magnitude": 25.068731800165562
-      }
-    },
-    {
       "kind": "drift",
-      "start": 3359,
-      "end": 3504,
-      "first_time": "2026-01-16 15:55:00",
-      "last_time": "2026-01-17 03:55:00",
+      "start": 1230,
+      "end": 1341,
+      "first_time": "2026-01-09 06:30:00",
+      "last_time": "2026-01-09 15:40:00",
       "params": {
-        "magnitude": 13.148758414121218,
-        "rate_per_hour": 0.6771892745470155,
-        "onset": 3271
+        "magnitude": 13.13419026214007,
+        "rate_per_hour": 0.8854510289083193,
+        "onset": 1163
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 1933,
+      "end": 1934,
+      "first_time": "2026-01-11 17:05:00",
+      "last_time": "2026-01-11 17:05:00",
+      "params": {
+        "magnitude": 15.89032434071644
       }
     },
     {
       "kind": "level_shift",
-      "start": 3542,
-      "end": 3575,
-      "first_time": "2026-01-17 07:10:00",
-      "last_time": "2026-01-17 09:50:00",
+      "start": 2808,
+      "end": 2876,
+      "first_time": "2026-01-14 18:00:00",
+      "last_time": "2026-01-14 23:35:00",
       "params": {
-        "magnitude": 23.80076821929457
+        "magnitude": 23.16088304314659
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 2922,
+      "end": 2994,
+      "first_time": "2026-01-15 03:30:00",
+      "last_time": "2026-01-15 09:25:00",
+      "params": {
+        "magnitude": 13.428383864351808
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 3318,
+      "end": 3319,
+      "first_time": "2026-01-16 12:30:00",
+      "last_time": "2026-01-16 12:30:00",
+      "params": {
+        "magnitude": 25.640966490505477
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 3807,
+      "end": 3808,
+      "first_time": "2026-01-18 05:15:00",
+      "last_time": "2026-01-18 05:15:00",
+      "params": {
+        "magnitude": 29.184698871843757
       }
     }
   ],
   "series_10": [
     {
-      "kind": "level_shift",
-      "start": 917,
-      "end": 965,
-      "first_time": "2026-01-08 04:25:00",
-      "last_time": "2026-01-08 08:20:00",
-      "params": {
-        "magnitude": 14.405220945193388
-      }
-    },
-    {
-      "kind": "level_shift",
-      "start": 2071,
-      "end": 2111,
-      "first_time": "2026-01-12 04:35:00",
-      "last_time": "2026-01-12 07:50:00",
-      "params": {
-        "magnitude": 13.968219283757664
-      }
-    },
-    {
       "kind": "spike",
-      "start": 2271,
-      "end": 2272,
-      "first_time": "2026-01-12 21:15:00",
-      "last_time": "2026-01-12 21:15:00",
+      "start": 503,
+      "end": 504,
+      "first_time": "2026-01-06 17:55:00",
+      "last_time": "2026-01-06 17:55:00",
       "params": {
-        "magnitude": 15.631882335211413
-      }
-    },
-    {
-      "kind": "seasonal_suppression",
-      "start": 3022,
-      "end": 3228,
-      "first_time": "2026-01-15 11:50:00",
-      "last_time": "2026-01-16 04:55:00",
-      "params": {
-        "magnitude": 15.0
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 3382,
-      "end": 3383,
-      "first_time": "2026-01-16 17:50:00",
-      "last_time": "2026-01-16 17:50:00",
-      "params": {
-        "magnitude": 39.19040634545944
+        "magnitude": 32.10853279846372
       }
     },
     {
       "kind": "drift",
-      "start": 3609,
-      "end": 3668,
-      "first_time": "2026-01-17 12:45:00",
-      "last_time": "2026-01-17 17:35:00",
+      "start": 659,
+      "end": 717,
+      "first_time": "2026-01-07 06:55:00",
+      "last_time": "2026-01-07 11:40:00",
       "params": {
-        "magnitude": 13.43135832579558,
-        "rate_per_hour": 1.7330784936510426,
-        "onset": 3575
+        "magnitude": 17.470455763359883,
+        "rate_per_hour": 2.6205683645039826,
+        "onset": 637
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 2003,
+      "end": 2066,
+      "first_time": "2026-01-11 22:55:00",
+      "last_time": "2026-01-12 04:05:00",
+      "params": {
+        "magnitude": 18.363690227864687
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 2342,
+      "end": 2389,
+      "first_time": "2026-01-13 03:10:00",
+      "last_time": "2026-01-13 07:00:00",
+      "params": {
+        "magnitude": 17.64770142694636
       }
     },
     {
       "kind": "spike",
-      "start": 3704,
-      "end": 3705,
-      "first_time": "2026-01-17 20:40:00",
-      "last_time": "2026-01-17 20:40:00",
+      "start": 2633,
+      "end": 2634,
+      "first_time": "2026-01-14 03:25:00",
+      "last_time": "2026-01-14 03:25:00",
       "params": {
-        "magnitude": 15.229901058023504
+        "magnitude": 34.597880112364365
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 2871,
+      "end": 2872,
+      "first_time": "2026-01-14 23:15:00",
+      "last_time": "2026-01-14 23:15:00",
+      "params": {
+        "magnitude": 33.99778074576584
+      }
+    },
+    {
+      "kind": "seasonal_suppression",
+      "start": 3575,
+      "end": 3738,
+      "first_time": "2026-01-17 09:55:00",
+      "last_time": "2026-01-17 23:25:00",
+      "params": {
+        "magnitude": 15.0
       }
     }
   ],
   "series_11": [
     {
-      "kind": "drift",
-      "start": 644,
-      "end": 876,
-      "first_time": "2026-01-07 05:40:00",
-      "last_time": "2026-01-08 00:55:00",
+      "kind": "seasonal_suppression",
+      "start": 588,
+      "end": 763,
+      "first_time": "2026-01-07 01:00:00",
+      "last_time": "2026-01-07 15:30:00",
       "params": {
-        "magnitude": 25.373649329831707,
-        "rate_per_hour": 1.0572353887429877,
-        "onset": 588
+        "magnitude": 15.0
       }
     },
     {
@@ -833,17 +831,7 @@
       "first_time": "2026-01-08 08:55:00",
       "last_time": "2026-01-08 08:55:00",
       "params": {
-        "magnitude": 24.326828664945044
-      }
-    },
-    {
-      "kind": "seasonal_suppression",
-      "start": 1992,
-      "end": 2189,
-      "first_time": "2026-01-11 22:00:00",
-      "last_time": "2026-01-12 14:20:00",
-      "params": {
-        "magnitude": 15.0
+        "magnitude": 35.74334768333687
       }
     },
     {
@@ -853,27 +841,29 @@
       "first_time": "2026-01-13 06:10:00",
       "last_time": "2026-01-13 06:10:00",
       "params": {
-        "magnitude": 13.573588321741294
+        "magnitude": 36.40852029530499
       }
     },
     {
       "kind": "level_shift",
-      "start": 2590,
-      "end": 2643,
-      "first_time": "2026-01-13 23:50:00",
-      "last_time": "2026-01-14 04:10:00",
+      "start": 2610,
+      "end": 2686,
+      "first_time": "2026-01-14 01:30:00",
+      "last_time": "2026-01-14 07:45:00",
       "params": {
-        "magnitude": 22.683977240902877
+        "magnitude": 5.705372752935789
       }
     },
     {
-      "kind": "level_shift",
-      "start": 3116,
-      "end": 3154,
-      "first_time": "2026-01-15 19:40:00",
-      "last_time": "2026-01-15 22:45:00",
+      "kind": "drift",
+      "start": 3784,
+      "end": 3861,
+      "first_time": "2026-01-18 03:20:00",
+      "last_time": "2026-01-18 09:40:00",
       "params": {
-        "magnitude": 17.727133338335463
+        "magnitude": 12.577083446665117,
+        "rate_per_hour": 1.1883858374801686,
+        "onset": 3734
       }
     },
     {
@@ -883,263 +873,271 @@
       "first_time": "2026-01-18 13:20:00",
       "last_time": "2026-01-18 13:20:00",
       "params": {
-        "magnitude": 12.385142949641065
+        "magnitude": 35.98241518907206
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 3933,
+      "end": 3969,
+      "first_time": "2026-01-18 15:45:00",
+      "last_time": "2026-01-18 18:40:00",
+      "params": {
+        "magnitude": 7.460555670191336
       }
     }
   ],
   "series_12": [
     {
-      "kind": "level_shift",
-      "start": 522,
-      "end": 576,
-      "first_time": "2026-01-06 19:30:00",
-      "last_time": "2026-01-06 23:55:00",
+      "kind": "spike",
+      "start": 528,
+      "end": 529,
+      "first_time": "2026-01-06 20:00:00",
+      "last_time": "2026-01-06 20:00:00",
       "params": {
-        "magnitude": 23.54459127257386
-      }
-    },
-    {
-      "kind": "drift",
-      "start": 1012,
-      "end": 1093,
-      "first_time": "2026-01-08 12:20:00",
-      "last_time": "2026-01-08 19:00:00",
-      "params": {
-        "magnitude": 13.105402285207001,
-        "rate_per_hour": 1.2097294417114155,
-        "onset": 963
+        "magnitude": 18.850716641737794
       }
     },
     {
       "kind": "seasonal_suppression",
-      "start": 1388,
-      "end": 1616,
-      "first_time": "2026-01-09 19:40:00",
-      "last_time": "2026-01-10 14:35:00",
+      "start": 963,
+      "end": 1193,
+      "first_time": "2026-01-08 08:15:00",
+      "last_time": "2026-01-09 03:20:00",
       "params": {
         "magnitude": 15.0
       }
     },
     {
-      "kind": "spike",
-      "start": 2232,
-      "end": 2233,
-      "first_time": "2026-01-12 18:00:00",
-      "last_time": "2026-01-12 18:00:00",
+      "kind": "drift",
+      "start": 1271,
+      "end": 1436,
+      "first_time": "2026-01-09 09:55:00",
+      "last_time": "2026-01-09 23:35:00",
       "params": {
-        "magnitude": 11.146673964546961
+        "magnitude": 20.066221186055934,
+        "rate_per_hour": 1.0995189690989553,
+        "onset": 1217
       }
     },
     {
       "kind": "level_shift",
-      "start": 2328,
-      "end": 2360,
-      "first_time": "2026-01-13 02:00:00",
-      "last_time": "2026-01-13 04:35:00",
+      "start": 1785,
+      "end": 1847,
+      "first_time": "2026-01-11 04:45:00",
+      "last_time": "2026-01-11 09:50:00",
       "params": {
-        "magnitude": 14.459178168120829
+        "magnitude": 16.356817958028252
       }
     },
     {
       "kind": "spike",
-      "start": 2485,
-      "end": 2486,
-      "first_time": "2026-01-13 15:05:00",
-      "last_time": "2026-01-13 15:05:00",
+      "start": 2180,
+      "end": 2181,
+      "first_time": "2026-01-12 13:40:00",
+      "last_time": "2026-01-12 13:40:00",
       "params": {
-        "magnitude": 16.134379202745198
+        "magnitude": 25.2071449180341
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 2953,
+      "end": 2977,
+      "first_time": "2026-01-15 06:05:00",
+      "last_time": "2026-01-15 08:00:00",
+      "params": {
+        "magnitude": 13.475805769684928
       }
     },
     {
       "kind": "spike",
-      "start": 3057,
-      "end": 3058,
-      "first_time": "2026-01-15 14:45:00",
-      "last_time": "2026-01-15 14:45:00",
+      "start": 4013,
+      "end": 4014,
+      "first_time": "2026-01-18 22:25:00",
+      "last_time": "2026-01-18 22:25:00",
       "params": {
-        "magnitude": 20.987201862700523
+        "magnitude": 33.649908886307124
       }
     }
   ],
   "series_13": [
     {
       "kind": "level_shift",
-      "start": 579,
-      "end": 673,
-      "first_time": "2026-01-07 00:15:00",
-      "last_time": "2026-01-07 08:00:00",
+      "start": 658,
+      "end": 685,
+      "first_time": "2026-01-07 06:50:00",
+      "last_time": "2026-01-07 09:00:00",
       "params": {
-        "magnitude": 24.2226227331045
+        "magnitude": 10.848774409762838
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 1248,
+      "end": 1249,
+      "first_time": "2026-01-09 08:00:00",
+      "last_time": "2026-01-09 08:00:00",
+      "params": {
+        "magnitude": 17.707044689703388
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 2007,
+      "end": 2008,
+      "first_time": "2026-01-11 23:15:00",
+      "last_time": "2026-01-11 23:15:00",
+      "params": {
+        "magnitude": 12.073254667101622
       }
     },
     {
       "kind": "seasonal_suppression",
-      "start": 721,
-      "end": 920,
-      "first_time": "2026-01-07 12:05:00",
-      "last_time": "2026-01-08 04:35:00",
+      "start": 2297,
+      "end": 2485,
+      "first_time": "2026-01-12 23:25:00",
+      "last_time": "2026-01-13 15:00:00",
       "params": {
         "magnitude": 15.0
       }
     },
     {
-      "kind": "spike",
-      "start": 1649,
-      "end": 1650,
-      "first_time": "2026-01-10 17:25:00",
-      "last_time": "2026-01-10 17:25:00",
-      "params": {
-        "magnitude": 22.857663311470382
-      }
-    },
-    {
       "kind": "drift",
-      "start": 2372,
-      "end": 2545,
-      "first_time": "2026-01-13 05:40:00",
-      "last_time": "2026-01-13 20:00:00",
+      "start": 3139,
+      "end": 3189,
+      "first_time": "2026-01-15 21:35:00",
+      "last_time": "2026-01-16 01:40:00",
       "params": {
-        "magnitude": 16.470855816619107,
-        "rate_per_hour": 0.7969768943525374,
-        "onset": 2297
+        "magnitude": 12.111234563235783,
+        "rate_per_hour": 1.7301763661765404,
+        "onset": 3105
       }
     },
     {
       "kind": "spike",
-      "start": 3041,
-      "end": 3042,
-      "first_time": "2026-01-15 13:25:00",
-      "last_time": "2026-01-15 13:25:00",
+      "start": 3596,
+      "end": 3597,
+      "first_time": "2026-01-17 11:40:00",
+      "last_time": "2026-01-17 11:40:00",
       "params": {
-        "magnitude": 20.81526696102911
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 3120,
-      "end": 3121,
-      "first_time": "2026-01-15 20:00:00",
-      "last_time": "2026-01-15 20:00:00",
-      "params": {
-        "magnitude": 26.69369418037366
+        "magnitude": 31.752875732963084
       }
     },
     {
       "kind": "level_shift",
-      "start": 3512,
-      "end": 3563,
-      "first_time": "2026-01-17 04:40:00",
-      "last_time": "2026-01-17 08:50:00",
+      "start": 3795,
+      "end": 3884,
+      "first_time": "2026-01-18 04:15:00",
+      "last_time": "2026-01-18 11:35:00",
       "params": {
-        "magnitude": 14.33159356877043
+        "magnitude": 23.003029550279763
       }
     }
   ],
   "series_14": [
     {
       "kind": "seasonal_suppression",
-      "start": 861,
-      "end": 1086,
-      "first_time": "2026-01-07 23:45:00",
-      "last_time": "2026-01-08 18:25:00",
+      "start": 842,
+      "end": 1001,
+      "first_time": "2026-01-07 22:10:00",
+      "last_time": "2026-01-08 11:20:00",
+      "params": {
+        "magnitude": 15.0
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 1136,
+      "end": 1137,
+      "first_time": "2026-01-08 22:40:00",
+      "last_time": "2026-01-08 22:40:00",
+      "params": {
+        "magnitude": 19.73886526130442
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 1173,
+      "end": 1174,
+      "first_time": "2026-01-09 01:45:00",
+      "last_time": "2026-01-09 01:45:00",
+      "params": {
+        "magnitude": 23.28310857315333
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 1994,
+      "end": 1995,
+      "first_time": "2026-01-11 22:10:00",
+      "last_time": "2026-01-11 22:10:00",
+      "params": {
+        "magnitude": 10.568537073577652
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 2381,
+      "end": 2436,
+      "first_time": "2026-01-13 06:25:00",
+      "last_time": "2026-01-13 10:55:00",
+      "params": {
+        "magnitude": 13.695869464971258
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 2923,
+      "end": 2997,
+      "first_time": "2026-01-15 03:35:00",
+      "last_time": "2026-01-15 09:40:00",
+      "params": {
+        "magnitude": 22.09454042317249
+      }
+    },
+    {
+      "kind": "drift",
+      "start": 3266,
+      "end": 3489,
+      "first_time": "2026-01-16 08:10:00",
+      "last_time": "2026-01-17 02:40:00",
+      "params": {
+        "magnitude": 30.83540233798705,
+        "rate_per_hour": 1.3963201058711117,
+        "onset": 3224
+      }
+    }
+  ],
+  "series_15": [
+    {
+      "kind": "seasonal_suppression",
+      "start": 724,
+      "end": 978,
+      "first_time": "2026-01-07 12:20:00",
+      "last_time": "2026-01-08 09:25:00",
       "params": {
         "magnitude": 15.0
       }
     },
     {
       "kind": "level_shift",
-      "start": 1161,
-      "end": 1204,
-      "first_time": "2026-01-09 00:45:00",
-      "last_time": "2026-01-09 04:15:00",
+      "start": 1632,
+      "end": 1665,
+      "first_time": "2026-01-10 16:00:00",
+      "last_time": "2026-01-10 18:40:00",
       "params": {
-        "magnitude": 9.530217108486141
+        "magnitude": 18.17914996130183
       }
     },
     {
       "kind": "level_shift",
-      "start": 1828,
-      "end": 1847,
-      "first_time": "2026-01-11 08:20:00",
-      "last_time": "2026-01-11 09:50:00",
+      "start": 2303,
+      "end": 2325,
+      "first_time": "2026-01-12 23:55:00",
+      "last_time": "2026-01-13 01:40:00",
       "params": {
-        "magnitude": 21.93885337773658
-      }
-    },
-    {
-      "kind": "drift",
-      "start": 2822,
-      "end": 2980,
-      "first_time": "2026-01-14 19:10:00",
-      "last_time": "2026-01-15 08:15:00",
-      "params": {
-        "magnitude": 25.617778323318646,
-        "rate_per_hour": 1.5684354075501212,
-        "onset": 2784
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 3137,
-      "end": 3138,
-      "first_time": "2026-01-15 21:25:00",
-      "last_time": "2026-01-15 21:25:00",
-      "params": {
-        "magnitude": 38.895429290651
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 3567,
-      "end": 3568,
-      "first_time": "2026-01-17 09:15:00",
-      "last_time": "2026-01-17 09:15:00",
-      "params": {
-        "magnitude": 33.430913057713425
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 3970,
-      "end": 3971,
-      "first_time": "2026-01-18 18:50:00",
-      "last_time": "2026-01-18 18:50:00",
-      "params": {
-        "magnitude": 30.01468069950506
-      }
-    }
-  ],
-  "series_15": [
-    {
-      "kind": "drift",
-      "start": 824,
-      "end": 949,
-      "first_time": "2026-01-07 20:40:00",
-      "last_time": "2026-01-08 07:00:00",
-      "params": {
-        "magnitude": 11.144288059262983,
-        "rate_per_hour": 0.5943620298273591,
-        "onset": 724
-      }
-    },
-    {
-      "kind": "level_shift",
-      "start": 1345,
-      "end": 1367,
-      "first_time": "2026-01-09 16:05:00",
-      "last_time": "2026-01-09 17:50:00",
-      "params": {
-        "magnitude": 6.357543454445684
-      }
-    },
-    {
-      "kind": "level_shift",
-      "start": 2256,
-      "end": 2339,
-      "first_time": "2026-01-12 20:00:00",
-      "last_time": "2026-01-13 02:50:00",
-      "params": {
-        "magnitude": 16.0457899205776
+        "magnitude": 23.388430286527026
       }
     },
     {
@@ -1149,7 +1147,7 @@
       "first_time": "2026-01-13 16:40:00",
       "last_time": "2026-01-13 16:40:00",
       "params": {
-        "magnitude": 24.965149185854937
+        "magnitude": 37.57300480203661
       }
     },
     {
@@ -1159,17 +1157,19 @@
       "first_time": "2026-01-13 21:55:00",
       "last_time": "2026-01-13 21:55:00",
       "params": {
-        "magnitude": 14.319451374385253
+        "magnitude": 28.22854307423634
       }
     },
     {
-      "kind": "seasonal_suppression",
-      "start": 2627,
-      "end": 2863,
-      "first_time": "2026-01-14 02:55:00",
-      "last_time": "2026-01-14 22:30:00",
+      "kind": "drift",
+      "start": 2762,
+      "end": 2929,
+      "first_time": "2026-01-14 14:10:00",
+      "last_time": "2026-01-15 04:00:00",
       "params": {
-        "magnitude": 15.0
+        "magnitude": 37.11042993404782,
+        "rate_per_hour": 2.319401870877989,
+        "onset": 2737
       }
     },
     {
@@ -1179,49 +1179,29 @@
       "first_time": "2026-01-17 12:30:00",
       "last_time": "2026-01-17 12:30:00",
       "params": {
-        "magnitude": 35.03249583265827
+        "magnitude": 16.23093340388155
       }
     }
   ],
   "series_16": [
     {
       "kind": "seasonal_suppression",
-      "start": 367,
-      "end": 599,
-      "first_time": "2026-01-06 06:35:00",
-      "last_time": "2026-01-07 01:50:00",
+      "start": 476,
+      "end": 654,
+      "first_time": "2026-01-06 15:40:00",
+      "last_time": "2026-01-07 06:25:00",
       "params": {
         "magnitude": 15.0
       }
     },
     {
-      "kind": "level_shift",
-      "start": 649,
-      "end": 698,
-      "first_time": "2026-01-07 06:05:00",
-      "last_time": "2026-01-07 10:05:00",
-      "params": {
-        "magnitude": 18.407288675393097
-      }
-    },
-    {
-      "kind": "level_shift",
-      "start": 2312,
-      "end": 2331,
-      "first_time": "2026-01-13 00:40:00",
-      "last_time": "2026-01-13 02:10:00",
-      "params": {
-        "magnitude": 10.687023877550851
-      }
-    },
-    {
       "kind": "spike",
-      "start": 2420,
-      "end": 2421,
-      "first_time": "2026-01-13 09:40:00",
-      "last_time": "2026-01-13 09:40:00",
+      "start": 1943,
+      "end": 1944,
+      "first_time": "2026-01-11 17:55:00",
+      "last_time": "2026-01-11 17:55:00",
       "params": {
-        "magnitude": 28.036785624183274
+        "magnitude": 37.454496041836606
       }
     },
     {
@@ -1231,53 +1211,81 @@
       "first_time": "2026-01-13 12:20:00",
       "last_time": "2026-01-13 12:20:00",
       "params": {
-        "magnitude": 31.727731993341624
+        "magnitude": 16.08148127541746
       }
     },
     {
-      "kind": "drift",
-      "start": 3034,
-      "end": 3145,
-      "first_time": "2026-01-15 12:50:00",
-      "last_time": "2026-01-15 22:00:00",
+      "kind": "level_shift",
+      "start": 2493,
+      "end": 2531,
+      "first_time": "2026-01-13 15:45:00",
+      "last_time": "2026-01-13 18:50:00",
       "params": {
-        "magnitude": 10.962198045200985,
-        "rate_per_hour": 0.648011707105477,
-        "onset": 2942
+        "magnitude": 16.866277666897254
       }
     },
     {
       "kind": "spike",
-      "start": 3237,
-      "end": 3238,
-      "first_time": "2026-01-16 05:45:00",
-      "last_time": "2026-01-16 05:45:00",
+      "start": 2797,
+      "end": 2798,
+      "first_time": "2026-01-14 17:05:00",
+      "last_time": "2026-01-14 17:05:00",
       "params": {
-        "magnitude": 16.36210516600964
+        "magnitude": 11.21833962576517
+      }
+    },
+    {
+      "kind": "drift",
+      "start": 2909,
+      "end": 3064,
+      "first_time": "2026-01-15 02:25:00",
+      "last_time": "2026-01-15 15:15:00",
+      "params": {
+        "magnitude": 25.586101832499267,
+        "rate_per_hour": 1.5991313645312042,
+        "onset": 2872
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 3089,
+      "end": 3118,
+      "first_time": "2026-01-15 17:25:00",
+      "last_time": "2026-01-15 19:45:00",
+      "params": {
+        "magnitude": 16.235007976016078
       }
     }
   ],
   "series_17": [
     {
-      "kind": "spike",
-      "start": 495,
-      "end": 496,
-      "first_time": "2026-01-06 17:15:00",
-      "last_time": "2026-01-06 17:15:00",
+      "kind": "level_shift",
+      "start": 433,
+      "end": 486,
+      "first_time": "2026-01-06 12:05:00",
+      "last_time": "2026-01-06 16:25:00",
       "params": {
-        "magnitude": 15.082666585906173
+        "magnitude": 7.5089764463781865
       }
     },
     {
-      "kind": "drift",
-      "start": 790,
-      "end": 862,
-      "first_time": "2026-01-07 17:50:00",
-      "last_time": "2026-01-07 23:45:00",
+      "kind": "spike",
+      "start": 654,
+      "end": 655,
+      "first_time": "2026-01-07 06:30:00",
+      "last_time": "2026-01-07 06:30:00",
       "params": {
-        "magnitude": 10.49179123170205,
-        "rate_per_hour": 0.9257462851501809,
-        "onset": 726
+        "magnitude": 22.870073141775272
+      }
+    },
+    {
+      "kind": "seasonal_suppression",
+      "start": 726,
+      "end": 930,
+      "first_time": "2026-01-07 12:30:00",
+      "last_time": "2026-01-08 05:25:00",
+      "params": {
+        "magnitude": 15.0
       }
     },
     {
@@ -1287,195 +1295,187 @@
       "first_time": "2026-01-08 10:55:00",
       "last_time": "2026-01-08 10:55:00",
       "params": {
-        "magnitude": 22.41466220866362
+        "magnitude": 18.92906524473519
       }
     },
     {
-      "kind": "seasonal_suppression",
-      "start": 2068,
-      "end": 2214,
-      "first_time": "2026-01-12 04:20:00",
-      "last_time": "2026-01-12 16:25:00",
+      "kind": "drift",
+      "start": 1328,
+      "end": 1423,
+      "first_time": "2026-01-09 14:40:00",
+      "last_time": "2026-01-09 22:30:00",
       "params": {
-        "magnitude": 15.0
-      }
-    },
-    {
-      "kind": "level_shift",
-      "start": 2971,
-      "end": 3050,
-      "first_time": "2026-01-15 07:35:00",
-      "last_time": "2026-01-15 14:05:00",
-      "params": {
-        "magnitude": 5.422620867479877
+        "magnitude": 29.301424333341444,
+        "rate_per_hour": 3.0843604561412046,
+        "onset": 1309
       }
     },
     {
       "kind": "spike",
-      "start": 3104,
-      "end": 3105,
-      "first_time": "2026-01-15 18:40:00",
-      "last_time": "2026-01-15 18:40:00",
+      "start": 3438,
+      "end": 3439,
+      "first_time": "2026-01-16 22:30:00",
+      "last_time": "2026-01-16 22:30:00",
       "params": {
-        "magnitude": 37.45690530521048
+        "magnitude": 38.779370085396444
       }
     },
     {
       "kind": "level_shift",
-      "start": 3228,
-      "end": 3247,
-      "first_time": "2026-01-16 05:00:00",
-      "last_time": "2026-01-16 06:30:00",
+      "start": 3909,
+      "end": 3955,
+      "first_time": "2026-01-18 13:45:00",
+      "last_time": "2026-01-18 17:30:00",
       "params": {
-        "magnitude": 5.798138352076343
+        "magnitude": 14.429109178652604
       }
     }
   ],
   "series_18": [
     {
-      "kind": "level_shift",
-      "start": 859,
-      "end": 942,
-      "first_time": "2026-01-07 23:35:00",
-      "last_time": "2026-01-08 06:25:00",
-      "params": {
-        "magnitude": 15.438539033361728
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 1379,
-      "end": 1380,
-      "first_time": "2026-01-09 18:55:00",
-      "last_time": "2026-01-09 18:55:00",
-      "params": {
-        "magnitude": 27.73104222850946
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 1658,
-      "end": 1659,
-      "first_time": "2026-01-10 18:10:00",
-      "last_time": "2026-01-10 18:10:00",
-      "params": {
-        "magnitude": 17.31913026072053
-      }
-    },
-    {
       "kind": "drift",
-      "start": 1704,
-      "end": 1784,
-      "first_time": "2026-01-10 22:00:00",
-      "last_time": "2026-01-11 04:35:00",
+      "start": 741,
+      "end": 912,
+      "first_time": "2026-01-07 13:45:00",
+      "last_time": "2026-01-08 03:55:00",
       "params": {
-        "magnitude": 26.543805916387424,
-        "rate_per_hour": 3.250261948945399,
-        "onset": 1686
+        "magnitude": 28.66387129944477,
+        "rate_per_hour": 1.6697400756958118,
+        "onset": 706
       }
     },
     {
       "kind": "spike",
-      "start": 2545,
-      "end": 2546,
-      "first_time": "2026-01-13 20:05:00",
-      "last_time": "2026-01-13 20:05:00",
+      "start": 1201,
+      "end": 1202,
+      "first_time": "2026-01-09 04:05:00",
+      "last_time": "2026-01-09 04:05:00",
       "params": {
-        "magnitude": 25.318312065292165
+        "magnitude": 27.95642399385168
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 1438,
+      "end": 1460,
+      "first_time": "2026-01-09 23:50:00",
+      "last_time": "2026-01-10 01:35:00",
+      "params": {
+        "magnitude": 18.16271747024827
       }
     },
     {
       "kind": "seasonal_suppression",
-      "start": 3367,
-      "end": 3573,
-      "first_time": "2026-01-16 16:35:00",
-      "last_time": "2026-01-17 09:40:00",
+      "start": 1686,
+      "end": 1855,
+      "first_time": "2026-01-10 20:30:00",
+      "last_time": "2026-01-11 10:30:00",
       "params": {
         "magnitude": 15.0
       }
     },
     {
-      "kind": "level_shift",
-      "start": 3789,
-      "end": 3837,
-      "first_time": "2026-01-18 03:45:00",
-      "last_time": "2026-01-18 07:40:00",
+      "kind": "spike",
+      "start": 2154,
+      "end": 2155,
+      "first_time": "2026-01-12 11:30:00",
+      "last_time": "2026-01-12 11:30:00",
       "params": {
-        "magnitude": 17.886480774684113
+        "magnitude": 15.623144305261388
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 2242,
+      "end": 2243,
+      "first_time": "2026-01-12 18:50:00",
+      "last_time": "2026-01-12 18:50:00",
+      "params": {
+        "magnitude": 16.097715225974852
+      }
+    },
+    {
+      "kind": "level_shift",
+      "start": 2639,
+      "end": 2665,
+      "first_time": "2026-01-14 03:55:00",
+      "last_time": "2026-01-14 06:00:00",
+      "params": {
+        "magnitude": 14.74782470274578
       }
     }
   ],
   "series_19": [
     {
-      "kind": "spike",
-      "start": 288,
-      "end": 289,
-      "first_time": "2026-01-06 00:00:00",
-      "last_time": "2026-01-06 00:00:00",
+      "kind": "level_shift",
+      "start": 425,
+      "end": 516,
+      "first_time": "2026-01-06 11:25:00",
+      "last_time": "2026-01-06 18:55:00",
       "params": {
-        "magnitude": 28.86009472572653
+        "magnitude": 12.363653241815477
       }
     },
     {
       "kind": "level_shift",
-      "start": 324,
-      "end": 394,
-      "first_time": "2026-01-06 03:00:00",
-      "last_time": "2026-01-06 08:45:00",
+      "start": 570,
+      "end": 601,
+      "first_time": "2026-01-06 23:30:00",
+      "last_time": "2026-01-07 02:00:00",
       "params": {
-        "magnitude": 14.391198325740662
-      }
-    },
-    {
-      "kind": "spike",
-      "start": 1007,
-      "end": 1008,
-      "first_time": "2026-01-08 11:55:00",
-      "last_time": "2026-01-08 11:55:00",
-      "params": {
-        "magnitude": 37.024930743145205
-      }
-    },
-    {
-      "kind": "drift",
-      "start": 1566,
-      "end": 1712,
-      "first_time": "2026-01-10 10:30:00",
-      "last_time": "2026-01-10 22:35:00",
-      "params": {
-        "magnitude": 11.130908595472654,
-        "rate_per_hour": 0.5059503907033025,
-        "onset": 1448
+        "magnitude": 22.62306012057087
       }
     },
     {
       "kind": "seasonal_suppression",
-      "start": 2325,
-      "end": 2488,
-      "first_time": "2026-01-13 01:45:00",
-      "last_time": "2026-01-13 15:15:00",
+      "start": 2177,
+      "end": 2355,
+      "first_time": "2026-01-12 13:25:00",
+      "last_time": "2026-01-13 04:10:00",
       "params": {
         "magnitude": 15.0
       }
     },
     {
-      "kind": "level_shift",
-      "start": 2537,
-      "end": 2592,
-      "first_time": "2026-01-13 19:25:00",
-      "last_time": "2026-01-13 23:55:00",
+      "kind": "spike",
+      "start": 2407,
+      "end": 2408,
+      "first_time": "2026-01-13 08:35:00",
+      "last_time": "2026-01-13 08:35:00",
       "params": {
-        "magnitude": 14.227000165327652
+        "magnitude": 37.93625801551778
       }
     },
     {
       "kind": "spike",
-      "start": 3960,
-      "end": 3961,
-      "first_time": "2026-01-18 18:00:00",
-      "last_time": "2026-01-18 18:00:00",
+      "start": 2824,
+      "end": 2825,
+      "first_time": "2026-01-14 19:20:00",
+      "last_time": "2026-01-14 19:20:00",
       "params": {
-        "magnitude": 22.694046704008517
+        "magnitude": 32.200808973741744
+      }
+    },
+    {
+      "kind": "drift",
+      "start": 3036,
+      "end": 3185,
+      "first_time": "2026-01-15 13:00:00",
+      "last_time": "2026-01-16 01:20:00",
+      "params": {
+        "magnitude": 27.944646221315203,
+        "rate_per_hour": 1.8526837273800134,
+        "onset": 3004
+      }
+    },
+    {
+      "kind": "spike",
+      "start": 3902,
+      "end": 3903,
+      "first_time": "2026-01-18 13:10:00",
+      "last_time": "2026-01-18 13:10:00",
+      "params": {
+        "magnitude": 33.27571769672049
       }
     }
   ]
