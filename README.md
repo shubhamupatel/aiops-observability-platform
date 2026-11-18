@@ -95,7 +95,7 @@ src/aiops/simulator/	config, generator, anomalies, scheduler, labels, dataset, s
 src/aiops/data/	loader: reads saved series back, with their ground truth kept separate
 src/aiops/evaluation/	scoring: point-wise and event-wise metrics, and the tuning/test split
 src/aiops/detection/	seasonal: the seasonal z-score detector
-tests/	210 tests
+tests/	211 tests
 scripts/	dataset generation and plotting
 data/synthetic/	the committed dataset
 docs/img/	figures
